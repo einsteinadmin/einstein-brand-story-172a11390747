@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<title>Internal — Brand Story Inspiration</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+  :root {
+    --einstein-orange: #EF8B22;
+    --einstein-navy: #1B3A5C;
+    --warm-bg: #FAF7F2;
+    --dark-bg: #111111;
+    --card-bg: #FFFFFF;
+    --text-primary: #1a1a1a;
+    --text-secondary: #555555;
+    --text-light: #888888;
+    --accent-green: #2E7D32;
+    --accent-blue: #2196F3;
+    --slide-padding: 80px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--text-primary);
+    background: var(--warm-bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── SLIDE SYSTEM ─── */
+  .slide {
+    min-height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--slide-padding);
+    position: relative;
+  }
+
+  .slide--dark {
+    background: var(--dark-bg);
+    color: #ffffff;
+  }
+
+  .slide--dark .text-secondary { color: #aaaaaa; }
+  .slide--dark .callout-card { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1); }
+
+  .slide--orange {
+    background: var(--einstein-orange);
+    color: #ffffff;
+  }
+
+  .slide--navy {
+    background: var(--einstein-navy);
+    color: #ffffff;
+  }
+
+  /* ─── NAV DOT INDICATOR ─── */
+  .nav-dots {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 100;
+  }
+
+  .nav-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+  }
+
+  .nav-dot:hover { background: var(--einstein-orange); transform: scale(1.3); }
+  .nav-dot.active { background: var(--einstein-orange); transform: scale(1.3); }
+
+  /* ─── TYPOGRAPHY ─── */
+  .slide-number {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--einstein-orange);
+    margin-bottom: 12px;
+  }
+
+  .slide--dark .slide-number,
+  .slide--orange .slide-number,
+  .slide--navy .slide-number { color: rgba(255,255,255,0.5); }
+
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    max-width: 900px;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    max-width: 800px;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .subtitle {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin-bottom: 40px;
+  }
+
+  .slide--dark .subtitle,
+  .slide--orange .subtitle,
+  .slide--navy .subtitle { color: rgba(255,255,255,0.7); }
+
+  .text-secondary { color: var(--text-secondary); }
+
+  .big-quote {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.2rem;
+    font-style: italic;
+    line-height: 1.4;
+    max-width: 800px;
+    margin-bottom: 16px;
+  }
+
+  .quote-source {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    font-weight: 500;
+  }
+
+  /* ─── SCREENSHOT + CONTENT LAYOUT ─── */
+  .split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1400px;
+  }
+
+  .screenshot-frame {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15), 0 4px 12px rgba(0,0,0,0.08);
+    position: relative;
+  }
+
+  .screenshot-frame img {
+    width: 100%;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  a.screenshot-frame { display: block; text-decoration: none; cursor: pointer; }
+  a.screenshot-frame:hover img { transform: scale(1.02); }
+  a.screenshot-frame:hover { box-shadow: 0 24px 70px rgba(0,0,0,0.2), 0 6px 16px rgba(0,0,0,0.1); }
+
+  .screenshot-frame--browser {
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .screenshot-frame--browser::before {
+    content: '● ● ●';
+    display: block;
+    padding: 10px 16px;
+    background: #f0f0f0;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #ccc;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .slide--dark .screenshot-frame--browser { border-color: rgba(255,255,255,0.1); }
+  .slide--dark .screenshot-frame--browser::before { background: #222; border-bottom-color: rgba(255,255,255,0.05); }
+
+  /* ─── CALLOUT CARDS ─── */
+  .callout-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+  }
+
+  .callout-card h4 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--einstein-orange);
+    margin-bottom: 8px;
+  }
+
+  .callout-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  .slide--dark .callout-card p { color: #bbb; }
+
+  .steal-tag {
+    display: inline-block;
+    background: var(--einstein-orange);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+
+  /* ─── COMPANY HEADER BAR ─── */
+  .company-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .company-bar .url {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-light);
+    background: rgba(0,0,0,0.04);
+    padding: 6px 14px;
+    border-radius: 20px;
+  }
+
+  .slide--dark .company-bar .url { background: rgba(255,255,255,0.08); color: #aaa; }
+
+  .company-bar .industry-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--einstein-orange);
+  }
+
+  /* ─── SCORECARD GRID ─── */
+  .scorecard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 32px;
+    max-width: 1000px;
+  }
+
+  .score-item {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 28px 24px;
+    text-align: center;
+  }
+
+  .score-item .score {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .score-item .score--low { color: #ff6b6b; }
+  .score-item .score--high { color: #4ecdc4; }
+
+  .score-item .label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ─── MOVES LIST ─── */
+  .moves-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 32px;
+    max-width: 1100px;
+  }
+
+  .move-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 32px;
+  }
+
+  .move-card .move-number {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--einstein-orange);
+    margin-bottom: 8px;
+  }
+
+  .move-card h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .move-card p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* ─── COMPARISON SLIDE ─── */
+  .comparison-row {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    gap: 0;
+    align-items: center;
+    max-width: 1100px;
+    margin-top: 40px;
+  }
+
+  .comparison-label {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ─── FOOTER ─── */
+  .slide-footer {
+    position: absolute;
+    bottom: 30px;
+    left: var(--slide-padding);
+    font-size: 0.75rem;
+    color: var(--text-light);
+    letter-spacing: 1px;
+  }
+
+  .slide--dark .slide-footer,
+  .slide--navy .slide-footer { color: rgba(255,255,255,0.3); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    .slide { padding: 40px; }
+    h1 { font-size: 2.8rem; }
+    h2 { font-size: 2rem; }
+    .split-layout { grid-template-columns: 1fr; gap: 32px; }
+    .scorecard-grid { grid-template-columns: repeat(2, 1fr); }
+    .moves-grid { grid-template-columns: 1fr; }
+    .comparison-row { grid-template-columns: 1fr; gap: 20px; }
+    .nav-dots { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV DOTS -->
+<nav class="nav-dots" id="navDots"></nav>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SLIDE 1: TITLE -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="slide slide--dark" id="slide-0">
+  <div class="slide-number">Einstein Moving Company</div>
+  <h1>Brand Story Inspiration</h1>
+  <p class="subtitle">10 companies that took unglamorous services and made their website <em>the</em> brand experience. What we can steal for Einstein's redesign.</p>
+  <p style="font-size: 0.85rem; color: rgba(255,255,255,0.3); margin-top: 40px;">Prepared by Albert &middot; April 2026 &middot; Scroll to explore &darr;</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SLIDE 2: THE PROBLEM -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="slide" id="slide-1">
+  <div class="slide-number">The Starting Point</div>
+  <h2>Einstein reads better than it looks.</h2>
+  <p class="subtitle">The copy is best-in-class — witty, warm, confident. Zoolander refs and "tiny math elves." But the visual design is generic 2020-era WordPress. The site doesn't match the personality.</p>
+
+  <div class="split-layout" style="margin-top: 40px;">
+    <a href="https://www.einsteinmoving.com" target="_blank" class="screenshot-frame screenshot-frame--browser">
+      <img src="brand-screenshots/00-einstein-current.png" alt="Einstein Moving current website">
+    </a>
+    <div>
+      <div class="callout-card">
+        <h4>What's Strong</h4>
+        <p>Brand voice. Trust signals (4.9/5.0, 5,900+ reviews, 55+ awards). The awards page. The new quote form.</p>
+      </div>
+      <div class="callout-card">
+        <h4>What's Dated</h4>
+        <p>Visual design could be any service company. 678ms TTFB. No personalization. Homepage is long but unfocused. Mobile doesn't delight.</p>
+      </div>
+      <div class="callout-card">
+        <h4>The Gap</h4>
+        <p>Newer pages (awards, quote form) feel like 2026. Core pages (home, about, services) feel like 2021. The gap grows with every new page built on the old foundation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SLIDE 3: WHO GIVES A CRAP -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="slide slide--dark" id="slide-2">
+  <div class="slide-number">01 &middot; Toilet Paper</div>
+  <div class="company-bar">
+    <h2 style="margin-bottom: 0;">Who Gives A Crap</h2>
+  </div>
+  <div class="company-bar" style="margin-bottom: 32px;">
+    <span class="url">whogivesacrap.org</span>
+    <span class="industry-tag">~$100M+ Revenue &middot; DTC &middot; 50% profits donated</span>
+  </div>
+
+  <div class="split-layout">
+    <a href="https://whogivesacrap.org" target="_blank" class="screenshot-frame screenshot-frame--browser">
+      <img src="brand-screenshots/01-whogivesacrap-hero.png" alt="Who Gives A Crap homepage">
+    </a>
+    <div>
+      <div class="callout-card">
+        <h4>Why It's Great</h4>
+        <p>They sell toilet paper and made it a lifestyle brand. The humor is everywhere — even their cart error says <strong>"Oh, crap!"</strong> Custom illustrations and bold colors transform the most boring product on earth into something you want to Instagram. They lead with mission (WHY), not product (WHAT).</p>
+      </div>
+      <div class="callout-card">
+        <span class="steal-tag">Steal This</span>
+        <h4>Personality in Every Pixel</h4>
+        <p>Einstein's humor shouldn't be confined to the About page. It should be in the quote confirmation, the loading states, the 404 page, the footer. WGAC proves every micro-moment is a brand moment.</p>
+      </div>
+      <div class="callout-card">
+        <span class="steal-tag">Steal This</span>
+        <h4>Mission Integration</h4>
+        <p>Einstein's 55+ awards and community impact should be woven into the experience — not listed on a trophy page nobody visits.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SLIDE 4: LEMONADE -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="slide" id="slide-3">
+  <div class="slide-number">02 &middot; Insurance</div>
+  <div class="company-bar">
+    <h2 style="margin-bottom: 0;">Lemonade</h2>
+  </div>
+  <div class="company-bar" style="margin-bottom: 32px;">
+    <span class="url">lemonade.com</span>
+    <span class="industry-tag">NYSE: LMND &middot; Home, Renters, Pet, Car Insurance</span>
+  </div>
+
+  <div class="split-layout">
+    <a href="https://lemonade.com" target="_blank" class="screenshot-frame screenshot-frame--browser">
+      <img src="brand-screenshots/02-lemonade-hero.png" alt="Lemonade homepage">
+    </a>
+    <div>
+      <div class="callout-card">
+        <h4>Why It's Great</h4>
+        <p><strong>"Forget everything you know about insurance."</strong> That hot pink CTA on a hand-drawn illustration background — you know it's Lemonade before you read a word. They obliterated every insurance design convention. Custom illustrations replace stock photos. Maya (AI chatbot) makes quoting feel like texting, not paperwork.</p>
+      </div>
+      <div class="callout-card">
+        <span class="steal-tag">Steal This</span>
+        <h4>Own a Color</h4>
+        <p>Lemonade owns pink in insurance. Einstein's orange should be just as instantly recognizable in moving. The current site doesn't commit hard enough to the palette.</p>
+      </div>
+      <div class="callout-card">
+        <span class="steal-tag">Steal This</span>
+        <h4>Conversational UX</h4>
+        <p>"Tell us about your move" hits different than "Request a Quote." Small copy changes shift the whole vibe from form to conversation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SLIDE 5: OSCAR HEALTH -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="slide slide--dark" id="slide-4">
+  <div class="slide-number">03 &middot; Health Insurance</div>
+  <div class="company-bar">
+    <h2 style="margin-bottom: 0;">Oscar Health</h2>
+  </div>
+  <div class="company-bar" style="margin-bottom: 32px;">
+    <span class="url">hioscar.com</span>
+    <span class="industry-tag">NYSE: OSCR &middot; 1M+ Members &middot; 22 States</span>
+  </div>
+
+  <div class="split-layout">
+    <a href="https://hioscar.com" target="_blank" class="screenshot-frame screenshot-frame--browser">
+      <img src="brand-screenshots/03-oscar-hero.png" alt="Oscar Health homepage">
+    </a>
+    <div>
+      <div class="callout-card">
+        <h4>Why It's Great</h4>
+        <p><strong>"Health insurance made for real life."</strong> Six words that reframe the entire category. That serif on bold purple feels like a lifestyle brand, not a claims processor. Real people, real emotions in every photo — "fun but grown up, with a handmade feel." And their bravest brand attribute? <strong>"Imperfect."</strong></p>
+      </div>
+      <div class="callout-card">
+        <span class="steal-tag">Steal This</span>
+        <h4>Serif Typography for Warmth</h4>
+        <p>Most moving sites use generic sans-serif. A well-chosen serif paired with a clean sans could instantly signal "we're different" while feeling warmer and more editorial. Look at that headline font.</p>
+      </div>
+      <div class="callout-card">
+        <span class="steal-tag">Steal This</span>
+        <h4>"Partner" Not "Provider"</h4>
+        <p>"We're your moving partner" hits different than "Request our services." Oscar's language of partnership builds relationship before the transaction even starts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SLIDE 6: DISHOOM -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="slide" id="slide-5">
+  <div class="slide-number">04 &middot; Restaurants &middot; 11 Locations</div>
+  <div class="company-bar">
+    <h2 style="margin-bottom: 0;">Dishoom</h2>
+  </div>
+  <div class="company-bar" style="margin-bottom: 32px;">
+    <span class="url">dishoom.com</span>
+    <span class="industry-tag">~$375M Valuation &middot; LVMH-backed &middot; Bombay-Inspired Cafes</span>
+  </div>
+
+  <div class="split-layout">
+    <a href="https://dishoom.com" target="_blank" class="screenshot-frame screenshot-frame--browser">
+      <img src="brand-screenshots/04-dishoom-clean.png" alt="Dishoom homepage">
+    </a>
+    <div>
+      <div class="callout-card">
+        <h4>Why It's Great</h4>
+        <p>A restaurant website that reads like a novel. Cinematic video hero with serif typography on a dark palette. Every single location has a unique fictional backstory set in 1960s Bombay. Even the <strong>cookie notice</strong> has personality: "The best cookies are for dipping. Preferably into a warming cup of our House Chai." The scroll unfolds narratively — no aggressive CTAs.</p>
+      </div>
+      <div class="callout-card">
+        <span class="steal-tag">Steal This</span>
+        <h4>Location Pages with Soul</h4>
+        <p>Einstein has 10 branches across Texas and Florida. Each city has a vibe. The Austin page shouldn't look like the Tampa page. Local photography, local references, local personality. Dishoom does this with 11 locations.</p>
+      </div>
+      <div class="callout-card">
+        <span class="steal-tag">Steal This</span>
+        <h4>Scroll as Story, Not Conversion Pressure</h4>
+        <p>What if the homepage led with the origin story — two kindergarten friends, one truck, a dream — and the quote came after you already loved them?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SLIDE 7: HONEY HOMES -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="slide slide--dark" id="slide-6">
+  <div class="slide-number">05 &middot; Handyman Services</div>
+  <div class="company-bar">
+    <h2 style="margin-bottom: 0;">Honey Homes</h2>
+  </div>
+  <div class="company-bar" style="margin-bottom: 32px;">
+    <span class="url">honeyhomes.com</span>
+    <span class="industry-tag">3,000+ Members &middot; VC-backed &middot; Multi-market</span>
+  </div>
+
+  <div class="split-layout">
+    <a href="https://honeyhomes.com" target="_blank" class="screenshot-frame screenshot-frame--browser">
+      <img src="brand-screenshots/05-honeyhomes-hero.png" alt="Honey Homes homepage">
+    </a>
+    <div>
+      <div class="callout-card">
+        <h4>Why It's Great</h4>
+        <p><strong>"Your home, handled."</strong> Three words that reframe handyman work as peace of mind. Proof stacking is immediate: "less than a 1% pass rate," 4.9 stars, Yahoo/WSJ/TechCrunch logos — all above the fold. Photography shows clean, professional humans, not stock wrenches. The scroll follows a narrative arc: Problem → Solution → Benefits → Pricing → Proof → Guarantee.</p>
+      </div>
+      <div class="callout-card">
+        <span class="steal-tag">Steal This</span>
+        <h4>Proof Stacking Above the Fold</h4>
+        <p>Einstein has BETTER proof than almost any moving company: 5,900+ reviews, 4.9 stars, 55+ awards, Inc. 5000 x7. Stack it aggressively. Don't make people scroll to find it. Make it impossible to miss.</p>
+      </div>
+      <div class="callout-card">
+        <span class="steal-tag">Steal This</span>
+        <h4>Vetting as a Story</h4>
+        <p>"Less than 1% pass rate" is a stat that tells a story about quality. Einstein could tell the mover hiring and training story the same way — how selective they are, why their movers are different.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SLIDE 8: DR. SQUATCH -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="slide" id="slide-7">
+  <div class="slide-number">06 &middot; Men's Grooming</div>
+  <div class="company-bar">
+    <h2 style="margin-bottom: 0;">Dr. Squatch</h2>
+  </div>
+  <div class="company-bar" style="margin-bottom: 32px;">
+    <span class="url">drsquatch.com</span>
+    <span class="industry-tag">Acquired by Unilever for $1.5B &middot; Men's Soap & Grooming</span>
+  </div>
+
+  <div class="split-layout">
+    <a href="https://drsquatch.com" target="_blank" class="screenshot-frame screenshot-frame--browser">
+      <img src="brand-screenshots/06-drsquatch-hero.png" alt="Dr. Squatch homepage">
+    </a>
+    <div>
+      <div class="callout-card">
+        <h4>Why It's Great</h4>
+        <p>They turned <strong>soap</strong> into a cultural hype cycle. Dragon Ball Z limited editions. Scent families as personality expression. Their banned ingredients page is called the <strong>"sh*t list."</strong> The YouTube ad that launched the brand ("You're Not a Dish, You're a Man") has 100M+ views. Even out-of-stock messages say "Aww crap." Humor is everywhere without undermining credibility.</p>
+      </div>
+      <div class="callout-card">
+        <span class="steal-tag">Steal This</span>
+        <h4>Voice in Every Micro-Moment</h4>
+        <p>Rewards programs, out-of-stock messages, ingredient lists — all have personality. Einstein's voice should show up in the quote confirmation, the "we're on our way" text, the post-move survey. Not just the homepage.</p>
+      </div>
+      <div class="callout-card">
+        <span class="steal-tag">Steal This</span>
+        <h4>Video as Brand-Builder</h4>
+        <p>The Squatch origin video is legendary. Einstein has Austin L making content. A 60-second brand film — the kindergarten story, the energy, the humor — that's homepage-hero material.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SLIDE 9: TUSHY -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="slide slide--dark" id="slide-8">
+  <div class="slide-number">07 &middot; Bathroom Products</div>
+  <div class="company-bar">
+    <h2 style="margin-bottom: 0;">TUSHY</h2>
+  </div>
+  <div class="company-bar" style="margin-bottom: 32px;">
+    <span class="url">hellotushy.com</span>
+    <span class="industry-tag">~$50M+ Revenue &middot; DTC Bidets</span>
+  </div>
+
+  <div class="split-layout">
+    <a href="https://hellotushy.com" target="_blank" class="screenshot-frame screenshot-frame--browser">
+      <img src="brand-screenshots/07-tushy-hero.png" alt="TUSHY homepage">
+    </a>
+    <div>
+      <div class="callout-card">
+        <h4>Why It's Great</h4>
+        <p>They sell bidets and they <strong>lean into it</strong>. Self-aware humor about selling butt-cleaning products. Bold color palette and playful design make a bidet look like a premium design object. Every piece of copy acknowledges the absurdity, which makes the brand feel confident and human. Education through entertainment.</p>
+      </div>
+      <div class="callout-card">
+        <span class="steal-tag">Steal This</span>
+        <h4>Lean Into the Unglamorous</h4>
+        <p>Moving IS stressful, sweaty, chaotic. Instead of pretending it's Pinterest-perfect, own the real moments — the box that's too heavy, the couch that won't fit, the kid who won't stop "helping." Humor about reality builds more trust than polished stock photos.</p>
+      </div>
+      <div class="callout-card">
+        <span class="steal-tag">Steal This</span>
+        <h4>Confidence = Not Taking Yourself Too Seriously</h4>
+        <p>TUSHY sells bidets and laughs about it. Einstein could acknowledge that moving sucks — and that's exactly why you want people who know how to make it not suck.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SLIDE 10: SWEETGREEN -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="slide" id="slide-9">
+  <div class="slide-number">08 &middot; Fast-Casual Food &middot; 220+ Locations</div>
+  <div class="company-bar">
+    <h2 style="margin-bottom: 0;">Sweetgreen</h2>
+  </div>
+  <div class="company-bar" style="margin-bottom: 32px;">
+    <span class="url">sweetgreen.com</span>
+    <span class="industry-tag">NYSE: SG &middot; ~$650M Revenue</span>
+  </div>
+
+  <div class="split-layout">
+    <a href="https://sweetgreen.com" target="_blank" class="screenshot-frame screenshot-frame--browser">
+      <img src="brand-screenshots/08-sweetgreen-hero.png" alt="Sweetgreen homepage">
+    </a>
+    <div>
+      <div class="callout-card">
+        <h4>Why It's Great</h4>
+        <p><strong>"SUNSHINE IN A SALAD"</strong> — aspirational headline that elevates lettuce into a lifestyle. Custom typeface (SweetSans) gives them a typographic identity no competitor can replicate. Ingredient transparency is woven into product descriptions, not hidden. Editorial design: generous whitespace, bold type, magazine-quality photography. The site is 70% air. It <em>breathes</em>.</p>
+      </div>
+      <div class="callout-card">
+        <span class="steal-tag">Steal This</span>
+        <h4>Custom Typography as Brand DNA</h4>
+        <p>Every other moving company uses the same three fonts. Own one. A carefully selected or custom typeface would be a massive differentiator for Einstein.</p>
+      </div>
+      <div class="callout-card">
+        <span class="steal-tag">Steal This</span>
+        <h4>Whitespace and Restraint</h4>
+        <p>Most moving sites cram every service, badge, and testimonial above the fold. Einstein could let the brand breathe. What you leave out matters as much as what you put in.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SLIDE 11: WISTIA -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="slide slide--dark" id="slide-10">
+  <div class="slide-number">09 &middot; B2B Video Platform</div>
+  <div class="company-bar">
+    <h2 style="margin-bottom: 0;">Wistia</h2>
+  </div>
+  <div class="company-bar" style="margin-bottom: 32px;">
+    <span class="url">wistia.com</span>
+    <span class="industry-tag">~$100M+ Revenue &middot; Self-Funded &middot; ~250 Employees</span>
+  </div>
+
+  <div class="split-layout">
+    <a href="https://wistia.com" target="_blank" class="screenshot-frame screenshot-frame--browser">
+      <img src="brand-screenshots/09-wistia-hero.png" alt="Wistia homepage">
+    </a>
+    <div>
+      <div class="callout-card">
+        <h4>Why It's Great</h4>
+        <p><strong>"One place for all your team's video-ing"</strong> — playful verb construction that no corporate brand would dare. Video hero (they eat their own cooking). Warm soft blues and pinks for a B2B company. Custom typeface. The key insight: they know <strong>when to be fun and when to get out of the way</strong>. Product pages are clean; culture pages go full personality.</p>
+      </div>
+      <div class="callout-card">
+        <span class="steal-tag">Steal This</span>
+        <h4>Fun Where It Counts, Clean Where It Converts</h4>
+        <p>Homepage and About = pure personality. Quote form and booking flow = frictionless and clear. Don't sacrifice conversion for cleverness. The right balance is intentional.</p>
+      </div>
+      <div class="callout-card">
+        <span class="steal-tag">Steal This</span>
+        <h4>Bootstrap Pride as Brand Story</h4>
+        <p>Wistia makes "self-funded" a badge of honor. Einstein's "two guys, one truck" energy is the same — that bootstrap origin is a brand asset. Make "started with one truck" equally prominent.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SLIDE 12: SHAKE SHACK (no screenshot) -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="slide" id="slide-11">
+  <div class="slide-number">10 &middot; Fast-Casual Food &middot; 275+ Locations</div>
+  <div class="company-bar">
+    <h2 style="margin-bottom: 0;">Shake Shack</h2>
+  </div>
+  <div class="company-bar" style="margin-bottom: 32px;">
+    <span class="url">shakeshack.com</span>
+    <span class="industry-tag">NYSE: SHAK &middot; ~$1B+ Revenue &middot; Pentagram-designed</span>
+  </div>
+
+  <div style="max-width: 900px;">
+    <div class="callout-card" style="margin-bottom: 24px;">
+      <h4>Why It's Great</h4>
+      <p>Origin story IS the brand: a <strong>hot dog cart in Madison Square Park</strong> created to support a public art installation. That story gets told everywhere — not hidden. Pentagram designed the entire identity system: logo, signage, bags, uniforms, environmental graphics. 1950s neon-sign-inspired typography is unmistakable. "Stand For Something Good" is their values page. Danny Meyer's philosophy of "enlightened hospitality" (employees first, then guests, then community) permeates everything.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <div class="callout-card">
+        <span class="steal-tag">Steal This</span>
+        <h4>Origin Story as Homepage Centerpiece</h4>
+        <p>Shake Shack's "hot dog cart" story is on par with Einstein's "two kindergarten friends, one truck." Both are founder myths that deserve the spotlight. Don't bury it.</p>
+      </div>
+      <div class="callout-card">
+        <span class="steal-tag">Steal This</span>
+        <h4>Design System That Scales</h4>
+        <p>10 branches = 10 opportunities. A unified but flexible design system — consistent brand, local personality — makes the website feel cohesive while each market page feels authentic. Shake Shack does this across 275 locations.</p>
+      </div>
+      <div class="callout-card">
+        <span class="steal-tag">Steal This</span>
+        <h4>"Fine-Dining Service in Work Boots"</h4>
+        <p>Einstein's version of "enlightened hospitality": white-glove service from people in work boots. The contrast between the care level and the industry expectation IS the story. Lean into it.</p>
+      </div>
+      <div class="callout-card">
+        <span class="steal-tag">Steal This</span>
+        <h4>Every Surface is a Brand Canvas</h4>
+        <p>Truck livery, mover uniforms, box branding, the website — they should all feel like one system. Shake Shack treats every surface (bags, cups, menus, walls) as brand expression.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SLIDE 13: THE 7 MOVES -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="slide slide--navy" id="slide-12">
+  <div class="slide-number">The Playbook</div>
+  <h1>7 Moves Einstein Should Make</h1>
+  <p class="subtitle">Based on all 10 examples — what the best brand-story websites do that our current site doesn't.</p>
+
+  <div class="moves-grid">
+    <div class="move-card">
+      <div class="move-number">01</div>
+      <h4>Origin Story Front and Center</h4>
+      <p>Two kindergarten best friends, one truck. First scroll, not page 3. Every great brand site leads with WHY, not WHAT.</p>
+    </div>
+    <div class="move-card">
+      <div class="move-number">02</div>
+      <h4>Personality in Every Pixel</h4>
+      <p>The copy voice is already there. The design needs to match it. Custom typography, committed color palette, photography that feels uniquely Einstein.</p>
+    </div>
+    <div class="move-card">
+      <div class="move-number">03</div>
+      <h4>Proof Stacking, Not Proof Hiding</h4>
+      <p>5,900+ reviews at 4.9 stars. 55+ awards. Inc. 5000 x7. That's absurd for a moving company. Stack it aggressively above the fold. Make it impossible to miss.</p>
+    </div>
+    <div class="move-card">
+      <div class="move-number">04</div>
+      <h4>Video as Hero</h4>
+      <p>Moving is physical, emotional, human. A homepage hero reel of real movers, real families, real moments — with that Einstein humor — would differentiate instantly.</p>
+    </div>
+    <div class="move-card">
+      <div class="move-number">05</div>
+      <h4>Location Pages with Soul</h4>
+      <p>10 markets = 10 opportunities to tell local stories. Local photography, local team features, local voice. Austin ≠ Tampa.</p>
+    </div>
+    <div class="move-card">
+      <div class="move-number">06</div>
+      <h4>Voice in the Micro-Moments</h4>
+      <p>Quote confirmation. 404 page. Loading screen. Post-move email. That's where brand magic happens — the moments nobody designs that everyone remembers.</p>
+    </div>
+    <div class="move-card" style="grid-column: 1 / -1; max-width: 540px;">
+      <div class="move-number">07</div>
+      <h4>Scroll as Narrative</h4>
+      <p>Stop cramming everything above the fold. The best sites unfold like stories: problem → promise → proof → personality → convert. Let Einstein's story breathe.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SLIDE 14: CLOSING -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="slide slide--dark" id="slide-13">
+  <div class="slide-number">The Bottom Line</div>
+  <div class="big-quote">"Einstein reads better than it looks. A redesign should close that gap."</div>
+  <p class="subtitle" style="margin-top: 32px;">The brand story is already incredible — two kindergarten best friends, one truck, 55+ awards, 5,900+ reviews at 4.9 stars. The website just needs to tell that story as well as the copy already does.</p>
+  <div style="margin-top: 48px; display: flex; gap: 20px; flex-wrap: wrap;">
+    <div class="callout-card" style="flex: 1; min-width: 280px;">
+      <h4>Full Platform Analysis</h4>
+      <p>6 platforms scored, 3 paths recommended, cost benchmarking, timeline modeling, ROI framework.</p>
+      <p style="margin-top: 8px;"><a href="https://docs.google.com/document/d/1rmOJWmZIxUW76qqxwXZVRBde-4Ks2dmO5ZQAmQzYL4Q/edit" style="color: var(--einstein-orange); text-decoration: none; font-weight: 600;">View on Google Drive &rarr;</a></p>
+    </div>
+    <div class="callout-card" style="flex: 1; min-width: 280px;">
+      <h4>Brand Story Research</h4>
+      <p>10 deep dives with takeaways, comparison table, and 7 recommended moves.</p>
+      <p style="margin-top: 8px;"><a href="https://docs.google.com/document/d/1XO9VlzXplv-xqjv4Ie-NEFUPwJ8juV-TR0xqNoAafz8/edit" style="color: var(--einstein-orange); text-decoration: none; font-weight: 600;">View on Google Drive &rarr;</a></p>
+    </div>
+  </div>
+  <p style="margin-top: 48px; font-size: 0.8rem; color: rgba(255,255,255,0.3);">Prepared by Albert &middot; April 2026 &middot; Einstein Moving Company</p>
+</section>
+
+<script>
+  // Build nav dots
+  const slides = document.querySelectorAll('.slide');
+  const navDots = document.getElementById('navDots');
+
+  slides.forEach((slide, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'nav-dot';
+    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+    dot.addEventListener('click', () => slide.scrollIntoView({ behavior: 'smooth' }));
+    navDots.appendChild(dot);
+  });
+
+  // Active dot tracking
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const index = Array.from(slides).indexOf(entry.target);
+        document.querySelectorAll('.nav-dot').forEach((dot, i) => {
+          dot.classList.toggle('active', i === index);
+        });
+      }
+    });
+  }, { threshold: 0.5 });
+
+  slides.forEach(slide => observer.observe(slide));
+</script>
+
+</body>
+</html>
