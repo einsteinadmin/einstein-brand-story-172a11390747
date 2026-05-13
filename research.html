@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<title>Internal — Brand Story Research</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+  :root {
+    --einstein-orange: #EF8B22;
+    --dark-bg: #111111;
+    --card-bg: rgba(255,255,255,0.04);
+    --card-border: rgba(255,255,255,0.08);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255,255,255,0.7);
+    --text-muted: rgba(255,255,255,0.45);
+    --text-faint: rgba(255,255,255,0.3);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--dark-bg);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+
+  /* ─── LAYOUT ─── */
+  .layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+
+  /* ─── SIDEBAR TOC ─── */
+  .toc {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 60px 32px 40px;
+    border-right: 1px solid var(--card-border);
+  }
+
+  .toc-eyebrow {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--einstein-orange);
+    margin-bottom: 16px;
+  }
+
+  .toc-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 28px;
+    line-height: 1.3;
+  }
+
+  .toc ol {
+    list-style: none;
+    counter-reset: toc-counter;
+  }
+
+  .toc li {
+    counter-increment: toc-counter;
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .toc li::before {
+    content: counter(toc-counter);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-faint);
+    width: 20px;
+  }
+
+  .toc a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s;
+    display: block;
+  }
+
+  .toc a:hover { color: var(--einstein-orange); }
+
+  .toc-section {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--card-border);
+  }
+
+  .toc-section a {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
+    transition: color 0.2s;
+  }
+
+  .toc-section a:hover { color: var(--einstein-orange); }
+
+  .toc-back {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 10px 16px;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+
+  .toc-back:hover {
+    border-color: var(--einstein-orange);
+    color: var(--einstein-orange);
+  }
+
+  /* ─── CONTENT ─── */
+  .content {
+    padding: 80px 80px 120px;
+    max-width: 900px;
+  }
+
+  .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--einstein-orange);
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+
+  .lede {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    line-height: 1.55;
+  }
+
+  .meta {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  h2.section-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 80px;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  .section-title .num {
+    color: var(--einstein-orange);
+    margin-right: 12px;
+  }
+
+  .common-thread {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-left: 3px solid var(--einstein-orange);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 60px;
+  }
+
+  .common-thread p { margin-bottom: 16px; color: var(--text-secondary); }
+  .common-thread p:last-child { margin-bottom: 0; }
+
+  /* ─── COMPANY BLOCK ─── */
+  .company {
+    margin-top: 80px;
+    padding-top: 60px;
+    border-top: 1px solid var(--card-border);
+  }
+
+  .company:first-of-type {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .company-header {
+    margin-bottom: 32px;
+  }
+
+  .company-meta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 12px;
+  }
+
+  .company-meta span { padding: 4px 12px; background: var(--card-bg); border-radius: 100px; }
+  .company-meta a { color: var(--text-muted); text-decoration: none; }
+  .company-meta a:hover { color: var(--einstein-orange); }
+
+  .screenshot {
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 24px 0 32px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    border: 1px solid var(--card-border);
+  }
+
+  .screenshot img { width: 100%; display: block; }
+
+  h3.subsection {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--einstein-orange);
+    margin-top: 32px;
+    margin-bottom: 16px;
+  }
+
+  h3.subsection.steal { color: #4ecdc4; }
+
+  ul.bullets {
+    list-style: none;
+  }
+
+  ul.bullets li {
+    padding-left: 24px;
+    position: relative;
+    margin-bottom: 12px;
+    color: var(--text-secondary);
+  }
+
+  ul.bullets li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--einstein-orange);
+    font-weight: 700;
+  }
+
+  ul.bullets li strong { color: var(--text-primary); font-weight: 600; }
+
+  /* ─── 7 MOVES SECTION ─── */
+  .moves-section {
+    margin-top: 100px;
+    padding: 60px 0 0;
+    border-top: 1px solid var(--card-border);
+  }
+
+  .moves-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  .move-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 28px;
+  }
+
+  .move-card .move-num {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--einstein-orange);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .move-card h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .move-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  /* ─── COMPARISON TABLE ─── */
+  .table-wrap {
+    margin-top: 32px;
+    overflow-x: auto;
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+  }
+
+  th, td {
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  th {
+    background: rgba(255,255,255,0.03);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--einstein-orange);
+  }
+
+  td { color: var(--text-secondary); }
+  td:first-child { font-weight: 600; color: var(--text-primary); }
+  tr:last-child td { border-bottom: none; }
+
+  .footer {
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 1px solid var(--card-border);
+    font-size: 0.8rem;
+    color: var(--text-faint);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    .layout { grid-template-columns: 1fr; }
+    .toc { position: relative; height: auto; border-right: none; border-bottom: 1px solid var(--card-border); padding: 32px; }
+    .content { padding: 48px 32px 80px; }
+    h1 { font-size: 2.2rem; }
+    .moves-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SIDEBAR TOC -->
+<!-- ═══════════════════════════════════════════════ -->
+<aside class="toc">
+  <div class="toc-eyebrow">Research</div>
+  <div class="toc-title">10 Brands That Made Boring Beautiful</div>
+  <ol>
+    <li><a href="#wgac">Who Gives A Crap</a></li>
+    <li><a href="#lemonade">Lemonade</a></li>
+    <li><a href="#oscar">Oscar Health</a></li>
+    <li><a href="#dishoom">Dishoom</a></li>
+    <li><a href="#honeyhomes">Honey Homes</a></li>
+    <li><a href="#drsquatch">Dr. Squatch</a></li>
+    <li><a href="#tushy">TUSHY</a></li>
+    <li><a href="#sweetgreen">Sweetgreen</a></li>
+    <li><a href="#wistia">Wistia</a></li>
+    <li><a href="#shakeshack">Shake Shack</a></li>
+  </ol>
+  <div class="toc-section">
+    <a href="#seven-moves">→ The 7 Moves Einstein Should Make</a>
+    <a href="#comparison">→ Comparison Table</a>
+  </div>
+  <a href="index.html" class="toc-back">← Back to the deck</a>
+</aside>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- MAIN CONTENT -->
+<!-- ═══════════════════════════════════════════════ -->
+<main class="content">
+
+  <div class="eyebrow">Brand Story Research · April 2026</div>
+  <h1>What Einstein Can Steal From 10 Brands Outside Moving</h1>
+  <p class="lede">Ten companies that took unglamorous or commoditized services and made the website itself the brand experience. What each one does — and what we can take.</p>
+  <p class="meta">Compiled for the Einstein website redesign · By Albert</p>
+
+  <div class="common-thread">
+    <p>Every company below shares Einstein's core challenge: they sell something people don't get excited about (insurance, soap, pest control, toilet paper, salads, handyman work). The ones that win don't just "have a good website" — they made the website an extension of the brand personality so strong that the site itself becomes part of the story customers retell.</p>
+    <p>Einstein's advantage: the copy voice is already best-in-class ("tiny math elves," Zoolander refs, "The Smart Move"). The gap is visual design and scroll experience catching up to the words. Every example below shows how to close that gap.</p>
+  </div>
+
+  <!-- 1. Who Gives A Crap -->
+  <section class="company" id="wgac">
+    <div class="company-header">
+      <h2 class="section-title"><span class="num">01</span>Who Gives A Crap — Toilet Paper with a Soul</h2>
+      <div class="company-meta">
+        <span><a href="https://whogivesacrap.org" target="_blank">whogivesacrap.org</a></span>
+        <span>Toilet paper · DTC</span>
+        <span>~$100M+ revenue · 50% profits donated</span>
+      </div>
+    </div>
+    <div class="screenshot"><img src="brand-screenshots/01-whogivesacrap-hero.png" alt="Who Gives A Crap homepage"></div>
+    <h3 class="subsection">What makes their site great</h3>
+    <ul class="bullets">
+      <li>The brand name IS the hook — irreverent humor baked into every pixel. Product copy reads like texts from your funniest friend, not a CPG company.</li>
+      <li>Custom illustrations and an unexpected color palette transform the most boring product on earth into something you want to Instagram.</li>
+      <li>They lead with mission, not product. The homepage tells you WHY before WHAT. "Good for your bum. Great for the world."</li>
+      <li>Limited-edition wrapper drops with artist collaborations turn toilet paper into collectible design objects.</li>
+      <li>Impact storytelling woven throughout — not buried in a CSR page. Their deforestation storybook (Winnie the Pooh with all the trees removed) is the kind of creative that gets press coverage.</li>
+      <li>Newsletter uses toilet humor and dad jokes. They sound like a buddy, not a brand.</li>
+    </ul>
+    <h3 class="subsection steal">What Einstein can steal</h3>
+    <ul class="bullets">
+      <li><strong>Lead with origin story, not services.</strong> Einstein's two-kindergarten-best-friends story is as good as any origin story in business. It should hit you in the first scroll, not be buried on an About page.</li>
+      <li><strong>Make the personality unavoidable.</strong> WGAC's humor isn't confined to an "About Us" page — it's in the cart, the 404 page, the email receipts. Einstein's wit should be everywhere: the quote form confirmation, the loading states, the footer.</li>
+      <li><strong>Mission integration.</strong> Einstein's community involvement and awards (55+) should be woven into the experience, not listed on a trophy page.</li>
+    </ul>
+  </section>
+
+  <!-- 2. Lemonade -->
+  <section class="company" id="lemonade">
+    <div class="company-header">
+      <h2 class="section-title"><span class="num">02</span>Lemonade — Insurance That Doesn't Feel Like Insurance</h2>
+      <div class="company-meta">
+        <span><a href="https://lemonade.com" target="_blank">lemonade.com</a></span>
+        <span>Insurance · Public (NYSE: LMND)</span>
+        <span>~$500M market cap</span>
+      </div>
+    </div>
+    <div class="screenshot"><img src="brand-screenshots/02-lemonade-hero.png" alt="Lemonade homepage"></div>
+    <h3 class="subsection">What makes their site great</h3>
+    <ul class="bullets">
+      <li>Bright pink and white palette obliterates every insurance design convention. You know it's Lemonade before you read a word.</li>
+      <li>Custom hand-drawn illustrations explain complex insurance concepts visually — no stock photos of families on couches.</li>
+      <li>Maya, their AI chatbot, replaces traditional forms with conversational quoting. Getting a quote feels like texting, not filling out paperwork.</li>
+      <li>Radical transparency: they publish a "Transparency Review" blog showing business performance, goals they missed, and restructuring decisions. Trust through vulnerability.</li>
+      <li>"Lemonaders of New York" series features real customer stories — making policyholders the heroes.</li>
+      <li>Animation blends live-action, stop-motion, 2D, and 3D — handmade aesthetic gives a fully digital company a human touch.</li>
+    </ul>
+    <h3 class="subsection steal">What Einstein can steal</h3>
+    <ul class="bullets">
+      <li><strong>Own a color.</strong> Lemonade owns pink in insurance. Einstein's orange should be as instantly recognizable in moving. The current site doesn't commit hard enough to the palette.</li>
+      <li><strong>Conversational quoting UX.</strong> Einstein's quote form could feel like talking to a person, not filling out a government form. Even small copy changes ("Tell us about your move" vs. "Request a Quote") shift the whole vibe.</li>
+      <li><strong>Transparency as trust.</strong> Einstein has 5,900+ reviews at 4.9 stars. That's not a stat — that's a story. Show the real reviews, the real movers, the real moments. Don't just badge it.</li>
+    </ul>
+  </section>
+
+  <!-- 3. Oscar Health -->
+  <section class="company" id="oscar">
+    <div class="company-header">
+      <h2 class="section-title"><span class="num">03</span>Oscar Health — Making Health Insurance Human</h2>
+      <div class="company-meta">
+        <span><a href="https://hioscar.com" target="_blank">hioscar.com</a></span>
+        <span>Health insurance · Public (NYSE: OSCR)</span>
+        <span>~1M+ members · 22 states</span>
+      </div>
+    </div>
+    <div class="screenshot"><img src="brand-screenshots/03-oscar-hero.png" alt="Oscar Health homepage"></div>
+    <h3 class="subsection">What makes their site great</h3>
+    <ul class="bullets">
+      <li>Hero headline: "Health insurance made for real life." Six words that reframe the entire category.</li>
+      <li>Warm beige and "Hot Blue" palette with custom serif typography (Heldane) — feels like a lifestyle brand, not a claims processor.</li>
+      <li>Illustrations show real people doing real things with real emotions — "fun but grown up, with a handmade feel that conveys human feelings and brand lightheartedness."</li>
+      <li>Brand attributes are codified: Clear, Caring, Credible, Inventive, and — critically — "Imperfect" (accepting the quirks and dents that make endeavors more human).</li>
+      <li>Three tenets of design simplicity: informal/brief language, intuitive guided navigation, clear/limited CTAs. They don't try to say everything on every page.</li>
+      <li>Partnership language: "We're your healthcare partner" — not "we provide coverage."</li>
+    </ul>
+    <h3 class="subsection steal">What Einstein can steal</h3>
+    <ul class="bullets">
+      <li><strong>Codify and commit to brand attributes.</strong> Oscar's "Imperfect" attribute is brave for an insurance company. Einstein could own "Human" or "Real" in a way that shapes every design decision.</li>
+      <li><strong>Serif typography for warmth.</strong> Most moving sites use generic sans-serif. A well-chosen serif paired with a clean sans could instantly signal "we're different" while feeling warmer and more editorial.</li>
+      <li><strong>"Partner" not "provider" language.</strong> "We're your moving partner" hits different than "Request our services."</li>
+    </ul>
+  </section>
+
+  <!-- 4. Dishoom -->
+  <section class="company" id="dishoom">
+    <div class="company-header">
+      <h2 class="section-title"><span class="num">04</span>Dishoom — A Restaurant That IS Its Story</h2>
+      <div class="company-meta">
+        <span><a href="https://dishoom.com" target="_blank">dishoom.com</a></span>
+        <span>Restaurant group · LVMH-backed</span>
+        <span>11 locations · ~$375M valuation</span>
+      </div>
+    </div>
+    <div class="screenshot"><img src="brand-screenshots/04-dishoom-clean.png" alt="Dishoom homepage"></div>
+    <h3 class="subsection">What makes their site great</h3>
+    <ul class="bullets">
+      <li>The homepage opens with a cinematic video hero and the line: "Look across the bay. You'll be walking and eating your way through the city that lies before you." A restaurant website that reads like a novel.</li>
+      <li>Every single location has a unique fictional backstory set in 1960s Bombay — who opened the cafe, who the patrons were, what the neighborhood felt like. Nothing is generic.</li>
+      <li>Warm beige palette with serif typography (Cheltenham BT) creates an editorial, vintage hospitality feel. Photography is intimate and richly detailed.</li>
+      <li>The scroll unfolds narratively. No aggressive CTAs. Pacing respects exploration over conversion pressure.</li>
+      <li>Time-of-day responsive design: hero visuals shift between daytime and nighttime versions.</li>
+      <li>"From Bombay with Love" — the entire brand is framed as a love letter, not a business.</li>
+      <li>Menus, layouts, copy, and even music vary by location. No two feel the same despite being the same brand.</li>
+    </ul>
+    <h3 class="subsection steal">What Einstein can steal</h3>
+    <ul class="bullets">
+      <li><strong>Give each location a personality.</strong> Einstein has 10 branches across Texas and Florida. The Austin page shouldn't look like the Tampa page. Local photography, local references, local personality.</li>
+      <li><strong>Narrative scroll over conversion pressure.</strong> What if the homepage led with the story — two kindergarten friends, one truck, a dream — and the quote came after you already loved them?</li>
+      <li><strong>Treat the origin story as cinema.</strong> Dishoom's founders write each backstory personally. Cameron and Paul's story deserves that same level of craft.</li>
+    </ul>
+  </section>
+
+  <!-- 5. Honey Homes -->
+  <section class="company" id="honeyhomes">
+    <div class="company-header">
+      <h2 class="section-title"><span class="num">05</span>Honey Homes — Handyman Work as a Premium Membership</h2>
+      <div class="company-meta">
+        <span><a href="https://honeyhomes.com" target="_blank">honeyhomes.com</a></span>
+        <span>Home maintenance · VC-backed</span>
+        <span>~3,000+ members · ~$10M+ raised</span>
+      </div>
+    </div>
+    <div class="screenshot"><img src="brand-screenshots/05-honeyhomes-hero.png" alt="Honey Homes homepage"></div>
+    <h3 class="subsection">What makes their site great</h3>
+    <ul class="bullets">
+      <li>Hero: "Your home, handled." Three words that reframe handyman work as peace of mind.</li>
+      <li>Teal and light palette conveys calm competence — the opposite of "guy in a van" energy.</li>
+      <li>Proof stacking is immediate and aggressive: "less than a 1% pass rate" for handymen, 4.9 stars from 417 reviews, media logos (Yahoo, WSJ, TechCrunch) — all above the fold.</li>
+      <li>Photography shows clean, professional handymen in lifestyle contexts — not stock photos of wrenches. The humans ARE the brand.</li>
+      <li>Membership framing replaces hourly rates. You don't hire a handyman — you join Honey Homes.</li>
+      <li>Scroll follows a narrative arc: Problem > Solution > Benefits > Pricing > Testimonials > Guarantee.</li>
+      <li>"30-day money-back guarantee" seal adds a safety net that removes the last objection.</li>
+    </ul>
+    <h3 class="subsection steal">What Einstein can steal</h3>
+    <ul class="bullets">
+      <li><strong>"Membership" language for repeat customers.</strong> Einstein has customers who move multiple times or refer friends. What if there was an Einstein Circle or a Smart Movers Club?</li>
+      <li><strong>Proof stacking above the fold.</strong> 5,900+ reviews, 4.9 stars, 55+ awards. Stack it immediately. Don't make people scroll to find it.</li>
+      <li><strong>Vetting as a story.</strong> Einstein could tell the mover hiring/training story — how selective they are, what training looks like, why their movers are different.</li>
+    </ul>
+  </section>
+
+  <!-- 6. Dr. Squatch -->
+  <section class="company" id="drsquatch">
+    <div class="company-header">
+      <h2 class="section-title"><span class="num">06</span>Dr. Squatch — Soap as Identity</h2>
+      <div class="company-meta">
+        <span><a href="https://drsquatch.com" target="_blank">drsquatch.com</a></span>
+        <span>Men's grooming · Acquired by Unilever for $1.5B (2025)</span>
+      </div>
+    </div>
+    <div class="screenshot"><img src="brand-screenshots/06-drsquatch-hero.png" alt="Dr. Squatch homepage"></div>
+    <h3 class="subsection">What makes their site great</h3>
+    <ul class="bullets">
+      <li>Product launches are treated like cultural events (Dragon Ball Z limited editions, seasonal drops). Soap has a hype cycle.</li>
+      <li>Copy is irreverent masculine without being toxic: "built for men who want to ditch the drugstore junk." Their banned ingredients page is called the "sh*t list."</li>
+      <li>Scent families (Wood & Musk, Fresh & Clean, Warm & Rich) transform soap selection into personality expression — you choose your olfactory identity, not just a bar.</li>
+      <li>Earthy greens and warm browns reflect "natural" while feeling modern. The palette works hard without trying hard.</li>
+      <li>Even transactional moments have voice: "Soap Up, Cash In" for their rewards program.</li>
+      <li>The YouTube ad that launched the brand ("You're Not a Dish, You're a Man") has 100M+ views.</li>
+    </ul>
+    <h3 class="subsection steal">What Einstein can steal</h3>
+    <ul class="bullets">
+      <li><strong>Voice in every micro-moment.</strong> Personality should show up in the quote confirmation email, the "we're on our way" text, the post-move survey — not just the homepage.</li>
+      <li><strong>Make the mundane a choice, not a chore.</strong> Einstein can frame "choosing your mover" as a personality statement. "Smart movers choose Einstein."</li>
+      <li><strong>Video as brand-builder.</strong> Einstein has Austin L making content. A 60-second brand film that captures the kindergarten story, the energy, the humor — that's homepage-hero material.</li>
+    </ul>
+  </section>
+
+  <!-- 7. TUSHY -->
+  <section class="company" id="tushy">
+    <div class="company-header">
+      <h2 class="section-title"><span class="num">07</span>TUSHY — Making the Unsexy Hilarious</h2>
+      <div class="company-meta">
+        <span><a href="https://hellotushy.com" target="_blank">hellotushy.com</a></span>
+        <span>Bidets · DTC</span>
+        <span>~$50M+ revenue</span>
+      </div>
+    </div>
+    <div class="screenshot"><img src="brand-screenshots/07-tushy-hero.png" alt="TUSHY homepage"></div>
+    <h3 class="subsection">What makes their site great</h3>
+    <ul class="bullets">
+      <li>Self-aware humor about selling butt-cleaning products. Homepage headline: "Stop wiping your butt" — with people joyfully riding a bidet stream like a water slide.</li>
+      <li>They don't hide from the awkwardness — they weaponize it. Every piece of copy acknowledges the absurdity, which makes the brand feel confident and human.</li>
+      <li>Bold, bright color palette and playful illustrations make a bidet look like a design object.</li>
+      <li>Out-of-stock messages read "Aww crap. This item is currently out of stock." Even error states have personality.</li>
+      <li>Humor bolsters credibility rather than undermining it. The brand takes the product seriously but doesn't take itself seriously.</li>
+      <li>Education through entertainment: they teach bidet benefits through humor rather than clinical facts.</li>
+    </ul>
+    <h3 class="subsection steal">What Einstein can steal</h3>
+    <ul class="bullets">
+      <li><strong>Lean into the unglamorous.</strong> Moving IS stressful, sweaty, chaotic. Own the real moments — the box that's too heavy, the couch that won't fit, the kid who won't stop "helping." Humor about the reality builds more trust than polished stock photos.</li>
+      <li><strong>Error states and edge cases as brand moments.</strong> What happens when someone visits a 404 page? What does the "your quote is being prepared" screen say? Throwaway moments are where personality-driven brands separate themselves.</li>
+      <li><strong>Confidence = not taking yourself too seriously.</strong> Einstein could acknowledge that moving sucks — and that's exactly why you want people who know how to make it not suck.</li>
+    </ul>
+  </section>
+
+  <!-- 8. Sweetgreen -->
+  <section class="company" id="sweetgreen">
+    <div class="company-header">
+      <h2 class="section-title"><span class="num">08</span>Sweetgreen — Fast-Casual That Feels Like a Movement</h2>
+      <div class="company-meta">
+        <span><a href="https://sweetgreen.com" target="_blank">sweetgreen.com</a></span>
+        <span>Fast-casual · Public (NYSE: SG)</span>
+        <span>220+ locations · ~$650M revenue</span>
+      </div>
+    </div>
+    <div class="screenshot"><img src="brand-screenshots/08-sweetgreen-hero.png" alt="Sweetgreen homepage"></div>
+    <h3 class="subsection">What makes their site great</h3>
+    <ul class="bullets">
+      <li>"SUNSHINE IN A SALAD" — aspirational headline that elevates lettuce into a lifestyle.</li>
+      <li>Custom typeface (SweetSans, inspired by Silver Lake Reservoir signage in LA) gives the brand a unique typographic identity no competitor can replicate.</li>
+      <li>Ingredient transparency woven into product descriptions: "antibiotic-free roasted chicken," "locally-made rosemary focaccia" with linked partner info. Sourcing IS the story.</li>
+      <li>Editorial design sensibility: generous whitespace, bold typography, photography that feels like a food magazine.</li>
+      <li>"Where should we open next?" invites customer participation — the audience is part of the brand expansion narrative.</li>
+      <li>Minimal photography against neutral backgrounds that let the food speak. No visual clutter.</li>
+      <li>Narrative extends beyond food: "sweetgreen for work" and "in the lab" sections position them as a wellness platform, not just a salad shop.</li>
+    </ul>
+    <h3 class="subsection steal">What Einstein can steal</h3>
+    <ul class="bullets">
+      <li><strong>Custom typography as brand DNA.</strong> A custom or carefully selected typeface for Einstein would be a massive differentiator. Every other moving company uses the same three fonts. Own one.</li>
+      <li><strong>Sourcing transparency = trust.</strong> Sweetgreen tells you where the chicken came from. Einstein could tell you where the movers came from — their training, their tenure, their story. "Your crew today: Marcus (3 yrs), Devon (5 yrs), team lead Sarah (8 yrs)" on the day-of experience.</li>
+      <li><strong>Whitespace and restraint.</strong> Sweetgreen's site is 70% air. Most moving sites cram every service, badge, and testimonial above the fold. Let the brand breathe.</li>
+    </ul>
+  </section>
+
+  <!-- 9. Wistia -->
+  <section class="company" id="wistia">
+    <div class="company-header">
+      <h2 class="section-title"><span class="num">09</span>Wistia — B2B That Feels Like Hanging Out with Friends</h2>
+      <div class="company-meta">
+        <span><a href="https://wistia.com" target="_blank">wistia.com</a></span>
+        <span>Video platform · B2B SaaS · Self-funded</span>
+        <span>~$100M+ revenue · ~250 employees</span>
+      </div>
+    </div>
+    <div class="screenshot"><img src="brand-screenshots/09-wistia-hero.png" alt="Wistia homepage"></div>
+    <h3 class="subsection">What makes their site great</h3>
+    <ul class="bullets">
+      <li>Hero video embedded prominently on the homepage — they eat their own cooking. A video platform that leads with video.</li>
+      <li>Custom "Walsheim" typeface for headlines paired with Inter for body — playful-meets-professional typographic system.</li>
+      <li>Soft blues, whites, and accent colors feel warm for a software company. No cold corporate blue.</li>
+      <li>Conversational copy throughout: "Tired of tool overload? We get it." "No studio needed. Just grab your laptop." "One place for all your team's video-ing."</li>
+      <li>Competence without arrogance — "knowledgeable and helpful but humble, wholesome and professional, positive, and playful."</li>
+      <li>Brand personality is intentional about WHERE it dials up — product pages stay clean and functional; about/culture pages go full personality.</li>
+    </ul>
+    <h3 class="subsection steal">What Einstein can steal</h3>
+    <ul class="bullets">
+      <li><strong>Know when to be fun and when to get out of the way.</strong> Homepage and About page can be pure personality. The quote form and booking flow should be frictionless and clear. Don't sacrifice conversion for cleverness.</li>
+      <li><strong>Self-funded pride as brand story.</strong> Einstein is self-built — two guys, one truck. That bootstrap energy is a brand asset.</li>
+      <li><strong>Video on the homepage.</strong> Moving is a VISUAL, PHYSICAL experience. A 15-second hero reel of real movers, real moves, real moments would be 10x more powerful than a stock hero image.</li>
+    </ul>
+  </section>
+
+  <!-- 10. Shake Shack -->
+  <section class="company" id="shakeshack">
+    <div class="company-header">
+      <h2 class="section-title"><span class="num">10</span>Shake Shack — Hot Dog Cart to Global Brand Through Design</h2>
+      <div class="company-meta">
+        <span><a href="https://shakeshack.com" target="_blank">shakeshack.com</a></span>
+        <span>Fast-casual · Public (NYSE: SHAK)</span>
+        <span>275+ locations · ~$1B+ revenue</span>
+      </div>
+    </div>
+    <h3 class="subsection">What makes their site great</h3>
+    <ul class="bullets">
+      <li>Origin story is THE brand story: a hot dog cart in Madison Square Park created to support a public art installation, designed by architect James Wines. This gets told everywhere — not hidden.</li>
+      <li>Pentagram designed the entire identity system — logo, signage, bags, uniforms, environmental graphics. Every touchpoint is designed, not decorated.</li>
+      <li>1950s neon-sign-inspired typography creates instant nostalgia and warmth. The swirly typeface is unmistakable.</li>
+      <li>"Stand For Something Good" is their values page — sourcing premium ingredients, supporting communities, environmental stewardship. Values are the story, not an afterthought.</li>
+      <li>Environmental graphics system is flexible enough to work across stand-alone restaurants, airports, and stadiums worldwide while maintaining brand consistency.</li>
+      <li>Community-first framing: "Fine-dining hospitality" applied to burgers. The Danny Meyer philosophy of "enlightened hospitality" (employees first, then guests, then community) permeates the brand.</li>
+    </ul>
+    <h3 class="subsection steal">What Einstein can steal</h3>
+    <ul class="bullets">
+      <li><strong>Design system that scales across locations.</strong> Einstein has 10 branches. A unified but flexible design system — consistent brand, local personality — would make the website feel cohesive while each market page feels authentic.</li>
+      <li><strong>Origin story as homepage centerpiece.</strong> Shake Shack's "hot dog cart" story is on par with Einstein's "two kindergarten friends, one truck." Both are founder myths that deserve the spotlight.</li>
+      <li><strong>"Fine-dining hospitality" in a casual setting.</strong> Einstein's version: "white-glove service from people in work boots." The contrast between care level and industry expectation IS the story.</li>
+      <li><strong>Environmental graphics thinking.</strong> The truck livery, the mover uniforms, the box branding, the website — they should all feel like one system.</li>
+    </ul>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- 7 MOVES SUMMARY -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <section class="moves-section" id="seven-moves">
+    <div class="eyebrow">Summary</div>
+    <h2 class="section-title" style="margin-top: 12px;">The 7 Moves Einstein Should Make</h2>
+    <p class="lede" style="margin-bottom: 0;">Based on all 10 examples, here's what the best brand-story websites do that Einstein's current site doesn't.</p>
+
+    <div class="moves-grid">
+      <div class="move-card">
+        <span class="move-num">01</span>
+        <h4>Origin Story Front and Center</h4>
+        <p>Every great brand site leads with WHY, not WHAT. Two kindergarten best friends, one truck, a dream. This should be the first thing you experience — not buried on page 3.</p>
+      </div>
+      <div class="move-card">
+        <span class="move-num">02</span>
+        <h4>Personality in Every Pixel</h4>
+        <p>The copy voice is already there. The design needs to match it. Custom typography, a committed color palette, illustrations or photography that feel uniquely Einstein — not template-grade.</p>
+      </div>
+      <div class="move-card">
+        <span class="move-num">03</span>
+        <h4>Proof Stacking, Not Proof Hiding</h4>
+        <p>5,900+ reviews at 4.9 stars. 55+ awards. That's absurd for a moving company. Stack it aggressively above the fold. Make it impossible to miss.</p>
+      </div>
+      <div class="move-card">
+        <span class="move-num">04</span>
+        <h4>Video as Hero</h4>
+        <p>Moving is physical, emotional, human. A homepage hero reel of real movers, real families, real moments (with that Einstein humor) would differentiate instantly.</p>
+      </div>
+      <div class="move-card">
+        <span class="move-num">05</span>
+        <h4>Location Pages with Soul</h4>
+        <p>10 markets = 10 opportunities to tell local stories. Dishoom gives each location a backstory. Einstein could give each market its own personality.</p>
+      </div>
+      <div class="move-card">
+        <span class="move-num">06</span>
+        <h4>Voice in the Micro-Moments</h4>
+        <p>The homepage is obvious. The real magic happens in the quote confirmation, the 404 page, the loading screen, the post-move email.</p>
+      </div>
+      <div class="move-card" style="grid-column: 1 / -1;">
+        <span class="move-num">07</span>
+        <h4>Scroll Experience as Narrative</h4>
+        <p>Stop cramming everything above the fold. The best sites (Dishoom, Sweetgreen, Oscar) unfold like stories — problem, promise, proof, personality, then conversion. Let Einstein's story breathe.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- COMPARISON TABLE -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <section class="moves-section" id="comparison">
+    <div class="eyebrow">Reference</div>
+    <h2 class="section-title" style="margin-top: 12px;">Quick Comparison</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>Industry</th>
+            <th>Size</th>
+            <th>Key lesson for Einstein</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Who Gives A Crap</td><td>Toilet paper</td><td>~$100M+ rev</td><td>Mission-woven storytelling, humor everywhere</td></tr>
+          <tr><td>Lemonade</td><td>Insurance</td><td>Public (NYSE)</td><td>Own a color, conversational UX, transparency</td></tr>
+          <tr><td>Oscar Health</td><td>Health insurance</td><td>Public (NYSE)</td><td>Warm typography, "imperfect" brand attributes</td></tr>
+          <tr><td>Dishoom</td><td>Restaurants</td><td>11 locations, ~$375M val</td><td>Location-specific backstories, narrative scroll</td></tr>
+          <tr><td>Honey Homes</td><td>Handyman services</td><td>3K+ members</td><td>Proof stacking, membership framing, vetting story</td></tr>
+          <tr><td>Dr. Squatch</td><td>Men's grooming</td><td>Acquired $1.5B</td><td>Voice in micro-moments, video as brand-builder</td></tr>
+          <tr><td>TUSHY</td><td>Bidets</td><td>~$50M+ rev</td><td>Lean into the unglamorous, error states as brand</td></tr>
+          <tr><td>Sweetgreen</td><td>Fast-casual food</td><td>Public, 220+ loc</td><td>Custom typography, whitespace, sourcing transparency</td></tr>
+          <tr><td>Wistia</td><td>Video platform (B2B)</td><td>~$100M+ rev, self-funded</td><td>Know when to be fun vs. functional, video hero</td></tr>
+          <tr><td>Shake Shack</td><td>Fast-casual food</td><td>Public, 275+ loc</td><td>Origin story as centerpiece, design system at scale</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="footer">Compiled by Albert for Cameron Brown · Einstein Moving Company · April 2026</div>
+
+</main>
+
+</div>
+
+</body>
+</html>

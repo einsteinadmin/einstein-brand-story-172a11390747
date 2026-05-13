@@ -164,9 +164,10 @@
   .split-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: 80px;
     align-items: center;
-    max-width: 1400px;
+    max-width: 1700px;
+    width: 100%;
   }
 
   .screenshot-frame {
@@ -274,9 +275,10 @@
   .scorecard-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 24px;
     margin-top: 32px;
-    max-width: 1000px;
+    max-width: 1400px;
+    width: 100%;
   }
 
   .score-item {
@@ -309,9 +311,10 @@
   .moves-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 24px;
+    gap: 28px;
     margin-top: 32px;
-    max-width: 1100px;
+    max-width: 1500px;
+    width: 100%;
   }
 
   .move-card {
@@ -347,7 +350,8 @@
     grid-template-columns: 1fr 60px 1fr;
     gap: 0;
     align-items: center;
-    max-width: 1100px;
+    max-width: 1500px;
+    width: 100%;
     margin-top: 40px;
   }
 
@@ -849,17 +853,11 @@
   <div class="slide-number">The Bottom Line</div>
   <div class="big-quote">"Einstein reads better than it looks. A redesign should close that gap."</div>
   <p class="subtitle" style="margin-top: 32px;">The brand story is already incredible — two kindergarten best friends, one truck, 55+ awards, 5,900+ reviews at 4.9 stars. The website just needs to tell that story as well as the copy already does.</p>
-  <div style="margin-top: 48px; display: flex; gap: 20px; flex-wrap: wrap;">
-    <div class="callout-card" style="flex: 1; min-width: 280px;">
-      <h4>Full Platform Analysis</h4>
-      <p>6 platforms scored, 3 paths recommended, cost benchmarking, timeline modeling, ROI framework.</p>
-      <p style="margin-top: 8px;"><a href="https://docs.google.com/document/d/1rmOJWmZIxUW76qqxwXZVRBde-4Ks2dmO5ZQAmQzYL4Q/edit" style="color: var(--einstein-orange); text-decoration: none; font-weight: 600;">View on Google Drive &rarr;</a></p>
-    </div>
-    <div class="callout-card" style="flex: 1; min-width: 280px;">
-      <h4>Brand Story Research</h4>
-      <p>10 deep dives with takeaways, comparison table, and 7 recommended moves.</p>
-      <p style="margin-top: 8px;"><a href="https://docs.google.com/document/d/1XO9VlzXplv-xqjv4Ie-NEFUPwJ8juV-TR0xqNoAafz8/edit" style="color: var(--einstein-orange); text-decoration: none; font-weight: 600;">View on Google Drive &rarr;</a></p>
-    </div>
+  <div style="margin-top: 48px;">
+    <a href="research.html" class="callout-card" style="display: block; text-decoration: none; color: inherit; max-width: 700px; transition: border-color 0.2s, transform 0.2s;">
+      <h4 style="color: var(--einstein-orange);">Read the deep-dive research &rarr;</h4>
+      <p>10 brand teardowns with screenshots and Einstein-specific takeaways. Plus the 7 moves we should make and a side-by-side comparison.</p>
+    </a>
   </div>
   <p style="margin-top: 48px; font-size: 0.8rem; color: rgba(255,255,255,0.3);">Prepared by Albert &middot; April 2026 &middot; Einstein Moving Company</p>
 </section>
