@@ -355,6 +355,297 @@
     color: var(--text-faint);
   }
 
+  /* ─── CURATION LAYER (notes / hide / export) ─── */
+  .curate-bar {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 18px;
+  }
+
+  .hide-btn {
+    background: transparent;
+    border: 1px solid var(--card-border);
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 6px 14px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .hide-btn:hover { border-color: #ff8a7a; color: #ff8a7a; }
+
+  .note-wrap { margin-top: 22px; }
+
+  .note-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--einstein-orange);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .note-label .saved-dot { color: #4ecdc4; font-size: 0.68rem; letter-spacing: 0.5px; text-transform: none; font-weight: 600; opacity: 0; transition: opacity 0.3s; }
+  .note-label .saved-dot.show { opacity: 1; }
+
+  .note-box {
+    width: 100%;
+    min-height: 64px;
+    background: rgba(239,139,34,0.05);
+    border: 1px solid rgba(239,139,34,0.25);
+    border-radius: 10px;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    padding: 12px 16px;
+    resize: vertical;
+  }
+
+  .note-box::placeholder { color: var(--text-faint); }
+  .note-box:focus { outline: none; border-color: var(--einstein-orange); }
+
+  .has-note .note-box { background: rgba(239,139,34,0.1); }
+
+  .hidden-tray {
+    margin-top: 24px;
+    padding: 16px 18px;
+    background: var(--card-bg);
+    border: 1px dashed var(--card-border);
+    border-radius: 10px;
+    display: none;
+  }
+
+  .hidden-tray.show { display: block; }
+
+  .hidden-tray .tray-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .hidden-tray button {
+    display: inline-block;
+    background: transparent;
+    border: 1px solid var(--card-border);
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 0.75rem;
+    padding: 5px 12px;
+    border-radius: 100px;
+    cursor: pointer;
+    margin: 0 6px 6px 0;
+    transition: all 0.2s;
+  }
+
+  .hidden-tray button:hover { border-color: #4ecdc4; color: #4ecdc4; }
+
+  .export-btn {
+    display: block;
+    width: 100%;
+    margin-top: 14px;
+    background: var(--einstein-orange);
+    border: none;
+    color: #111;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 11px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .export-btn:hover { opacity: 0.85; }
+
+  .toc li.is-hidden a { text-decoration: line-through; color: var(--text-faint); }
+
+  .company.is-hidden { display: none; }
+
+  .wave-banner {
+    margin-top: 100px;
+    padding: 36px 40px;
+    background: rgba(239,139,34,0.06);
+    border: 1px solid rgba(239,139,34,0.25);
+    border-radius: 14px;
+  }
+
+  .wave-banner .eyebrow { margin-bottom: 10px; }
+
+  .wave-banner h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+
+  .wave-banner p { color: var(--text-secondary); font-size: 0.95rem; }
+
+  .fit-note {
+    margin-top: 18px;
+    font-size: 0.85rem;
+    color: #ff8a7a;
+  }
+
+  .fit-note strong { color: #ff8a7a; }
+
+  /* ─── AUDIT PASS (6/11): readability + curation v2 ─── */
+
+  /* Mute the context list; the steal list carries the contrast */
+  .company h3.subsection:not(.steal) + ul.bullets li { color: var(--text-muted); }
+  .company h3.subsection:not(.steal) + ul.bullets li strong { color: var(--text-secondary); }
+
+  /* Per-bullet like pins on steal lists */
+  ul.bullets li .like-btn {
+    position: absolute;
+    left: -34px;
+    top: -1px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--card-border);
+    background: transparent;
+    color: var(--text-faint);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.15s;
+    line-height: 1;
+  }
+  ul.bullets li .like-btn:hover { border-color: var(--einstein-orange); color: var(--einstein-orange); }
+  ul.bullets li .like-btn.liked { background: var(--einstein-orange); border-color: var(--einstein-orange); color: #111; }
+  ul.bullets.likeable { margin-left: 36px; }
+  ul.bullets.likeable li { padding-left: 24px; }
+
+  /* Designed band for sections without screenshots */
+  .site-band {
+    margin: 24px 0 32px;
+    padding: 34px 36px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .site-band .band-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .site-band a.band-visit {
+    display: inline-block;
+    padding: 12px 22px;
+    border: 1px solid var(--einstein-orange);
+    border-radius: 100px;
+    color: var(--einstein-orange);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: all 0.2s;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .site-band a.band-visit:hover { background: var(--einstein-orange); color: #111; }
+
+  /* TOC as dashboard */
+  .toc li.toc-active a { color: var(--einstein-orange); font-weight: 600; }
+  .toc li.has-note > a::after { content: ' ♥'; color: var(--einstein-orange); font-size: 0.75rem; }
+
+  /* Picks bar — always-reachable controls */
+  .picks-bar {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 60;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background: #1a1a1a;
+    border: 1px solid var(--card-border);
+    border-radius: 100px;
+    padding: 8px 10px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.55);
+  }
+  .picks-bar .pb-count {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    padding: 0 6px 0 10px;
+    white-space: nowrap;
+  }
+  .picks-bar .pb-count b { color: var(--einstein-orange); }
+  .picks-bar button {
+    font-family: inherit;
+    border: none;
+    border-radius: 100px;
+    padding: 10px 16px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    min-height: 40px;
+    transition: opacity 0.15s;
+  }
+  .picks-bar .pb-hidden {
+    background: transparent;
+    border: 1px solid var(--card-border);
+    color: var(--text-secondary);
+  }
+  .picks-bar .pb-hidden:hover { border-color: #4ecdc4; color: #4ecdc4; }
+  .picks-bar .pb-export { background: var(--einstein-orange); color: #111; }
+  .picks-bar .pb-export:hover { opacity: 0.85; }
+  .picks-pop {
+    position: fixed;
+    right: 22px;
+    bottom: 84px;
+    z-index: 60;
+    background: #1a1a1a;
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    max-width: 320px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.55);
+    display: none;
+  }
+  .picks-pop.show { display: block; }
+  .picks-pop .tray-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px; }
+  .picks-pop button {
+    display: inline-block;
+    background: transparent;
+    border: 1px solid var(--card-border);
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 0.78rem;
+    padding: 9px 14px;
+    min-height: 38px;
+    border-radius: 100px;
+    cursor: pointer;
+    margin: 0 6px 6px 0;
+    transition: all 0.2s;
+  }
+  .picks-pop button:hover { border-color: #4ecdc4; color: #4ecdc4; }
+
+  /* Legibility bumps */
+  .note-box::placeholder { color: rgba(255,255,255,0.5); }
+  .hide-btn { min-height: 36px; }
+  .hidden-tray button { min-height: 36px; padding: 8px 14px; }
+  .storage-caveat { font-size: 0.72rem; color: var(--text-muted); margin-top: 8px; text-align: center; }
+
   /* ─── RESPONSIVE ─── */
   @media (max-width: 1024px) {
     .layout { grid-template-columns: 1fr; }
@@ -374,7 +665,8 @@
 <!-- ═══════════════════════════════════════════════ -->
 <aside class="toc">
   <div class="toc-eyebrow">Research</div>
-  <div class="toc-title">10 Brands That Made Boring Beautiful</div>
+  <div class="toc-title">Inspiration: Two Waves</div>
+  <div style="font-size:0.7rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-faint); margin-bottom:10px;">Wave 1 · Brand Story (Apr)</div>
   <ol>
     <li><a href="#wgac">Who Gives A Crap</a></li>
     <li><a href="#lemonade">Lemonade</a></li>
@@ -387,10 +679,27 @@
     <li><a href="#wistia">Wistia</a></li>
     <li><a href="#shakeshack">Shake Shack</a></li>
   </ol>
+  <div style="font-size:0.7rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-faint); margin:18px 0 10px;">Wave 2 · Design Awards (Jun)</div>
+  <ol style="counter-reset: toc-counter 10;">
+    <li><a href="#terminal">Terminal Industries</a></li>
+    <li><a href="#vipro">VIPro Moving</a></li>
+    <li><a href="#montfort">Montfort</a></li>
+    <li><a href="#breachbunny">BreachBunny</a></li>
+    <li><a href="#fintech-trio">Mercury · Ramp · Modern Treasury</a></li>
+    <li><a href="#conversion-pair">MG Moving · Mission AC</a></li>
+    <li><a href="#microsoft-ai">Microsoft AI</a></li>
+  </ol>
   <div class="toc-section">
     <a href="#seven-moves">→ The 7 Moves Einstein Should Make</a>
+    <a href="#pattern-map">→ Wave-2 Patterns × Page Types</a>
     <a href="#comparison">→ Comparison Table</a>
   </div>
+  <div class="hidden-tray" id="hiddenTray">
+    <div class="tray-title">Hidden (<span id="hiddenCount">0</span>)</div>
+    <div id="hiddenList"></div>
+  </div>
+  <button class="export-btn" id="exportBtn">📋 Export my picks</button>
+  <div class="storage-caveat">Saves in this browser only — export when done.</div>
   <a href="index.html" class="toc-back">← Back to the deck</a>
 </aside>
 
@@ -399,10 +708,11 @@
 <!-- ═══════════════════════════════════════════════ -->
 <main class="content">
 
-  <div class="eyebrow">Brand Story Research · April 2026</div>
-  <h1>What Einstein Can Steal From 10 Brands Outside Moving</h1>
-  <p class="lede">Ten companies that took unglamorous or commoditized services and made the website itself the brand experience. What each one does — and what we can take.</p>
-  <p class="meta">Compiled for the Einstein website redesign · By Albert</p>
+  <div class="eyebrow">Brand Story Research · April + June 2026</div>
+  <h1>What Einstein Can Steal From the Brands That Did It Right</h1>
+  <p class="lede">Two waves of inspiration, one home. <strong>Wave 1 (April):</strong> ten companies that made unglamorous services into brand experiences. <strong>Wave 2 (June):</strong> design-award winners and conversion benchmarks from 2024–26, swept for the workshop build.</p>
+  <p class="lede" style="font-size:0.95rem;">This page is now a working tool, Cameron: drop a note under any site for what YOU want to steal, hide the ones that don't land, and hit <strong>Export my picks</strong> when you're done — your picks feed the v2 mockup directions directly. Everything saves automatically in this browser.</p>
+  <p class="meta">Compiled for the Einstein website redesign · By Albert · Curation layer added 6/11/2026</p>
 
   <div class="common-thread">
     <p>Every company below shares Einstein's core challenge: they sell something people don't get excited about (insurance, soap, pest control, toilet paper, salads, handyman work). The ones that win don't just "have a good website" — they made the website an extension of the brand personality so strong that the site itself becomes part of the story customers retell.</p>
@@ -490,6 +800,7 @@
       <li><strong>Codify and commit to brand attributes.</strong> Oscar's "Imperfect" attribute is brave for an insurance company. Einstein could own "Human" or "Real" in a way that shapes every design decision.</li>
       <li><strong>Serif typography for warmth.</strong> Most moving sites use generic sans-serif. A well-chosen serif paired with a clean sans could instantly signal "we're different" while feeling warmer and more editorial.</li>
       <li><strong>"Partner" not "provider" language.</strong> "We're your moving partner" hits different than "Request our services."</li>
+      <li><strong>Wave-2 addendum (6/11):</strong> Oscar resurfaced in the design-award sweep as the conversion benchmark — concrete dollar benefits in the hero (not adjectives), blue+orange on calm white reading premium-trustworthy (our exact palette), and plain-language explainers for a confusing purchase (the model for "how a quote is built" on the Pricing page).</li>
     </ul>
   </section>
 
@@ -692,6 +1003,217 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════ -->
+  <!-- WAVE 2 -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <div class="wave-banner" id="wave2">
+    <div class="eyebrow">Wave 2 · June 2026</div>
+    <h2>The Design-Award Sweep</h2>
+    <p>Wave 1 answered "what should the brand feel like?" Wave 2 answers "what are the best-built sites of 2024–26 actually doing?" — Awwwards/CSSDA winners and conversion benchmarks, filtered for patterns we can rebuild as WordPress FSE blocks. Every site verified live during the 6/11 sweep for the website workshop. (Oscar Health reappeared in this sweep — its conversion notes were folded into its Wave 1 card above.)</p>
+  </div>
+
+  <!-- 11. Terminal Industries -->
+  <section class="company" id="terminal">
+    <div class="company-header">
+      <h2 class="section-title"><span class="num">11</span>Terminal Industries — Trucking-Adjacent, Looks Like a Tech Brand</h2>
+      <div class="company-meta">
+        <span><a href="https://terminal-industries.com" target="_blank">terminal-industries.com</a></span>
+        <span>Logistics / yard operations · B2B</span>
+        <span>Awwwards Site of the Month · Sep 2025</span>
+      </div>
+    </div>
+    <h3 class="subsection">What makes their site great</h3>
+    <ul class="bullets">
+      <li>An AI yard-operating system for shipping yards — about as unglamorous as logistics gets — presented as a genuinely premium brand. The closest existing proof of Einstein's exact repositioning goal.</li>
+      <li>Scroll narrative built from <strong>real operational imagery + clean type</strong> — aerial yard shots, real trucks, no abstract 3D fluff.</li>
+      <li>Modular section system with a tight, disciplined color system — the confidence comes from restraint, not decoration.</li>
+    </ul>
+    <h3 class="subsection steal">What Einstein can steal</h3>
+    <ul class="bullets">
+      <li><strong>The Smart Move System told through real truck/crew photography</strong> in a disciplined scroll narrative — their yard footage is our drone-over-the-branch footage.</li>
+      <li><strong>Modular sections that map straight onto an FSE block library</strong> — every section is a reusable, recombinable unit.</li>
+      <li><strong>Proof that trucks-and-yards can look like a tech company</strong> without losing credibility. Keep Einstein's warmth and wit in the copy — theirs is enterprise-cold.</li>
+    </ul>
+    <p class="fit-note"><strong>Fit note:</strong> B2B tone — steal the structure and photography discipline, not the voice.</p>
+  </section>
+
+  <!-- 12. VIPro Moving -->
+  <section class="company" id="vipro">
+    <div class="company-header">
+      <h2 class="section-title"><span class="num">12</span>VIPro Moving — The Bar Inside Our Own Industry</h2>
+      <div class="company-meta">
+        <span><a href="https://vippromoving.com" target="_blank">vippromoving.com</a></span>
+        <span>Moving · LA/SF premium</span>
+        <span>2025 "Best Website" · Best of Movers Awards (beat 200+ movers)</span>
+      </div>
+    </div>
+    <h3 class="subsection">What makes their site great</h3>
+    <ul class="bullets">
+      <li><strong>Real hero video of their own crews</strong> — not stock — the single most-cited reason it won.</li>
+      <li>A wall of authentic customer <strong>VIDEO reviews</strong>, not just star ratings.</li>
+      <li>Minimal-friction messaging: one promise, one CTA, no menu maze above the fold.</li>
+    </ul>
+    <h3 class="subsection steal">What Einstein can steal</h3>
+    <ul class="bullets">
+      <li><strong>Crew hero video is cheap ammunition for us</strong> — 75 trucks, 400+ people, and Austin L already producing content.</li>
+      <li><strong>A filterable video-review wall</strong> would instantly out-credential the written "8,100+ reviews" claim.</li>
+      <li><strong>This is the floor, not the ceiling</strong> — visually it's "polished modern," not distinctive. We beat it on brand personality and motion.</li>
+    </ul>
+    <p class="fit-note"><strong>Fit note:</strong> the in-industry benchmark to clear — study it, then out-personality it.</p>
+  </section>
+
+  <!-- 13. Montfort -->
+  <section class="company" id="montfort">
+    <div class="company-header">
+      <h2 class="section-title"><span class="num">13</span>Montfort — A Boring Trust Industry That Swept the Awards</h2>
+      <div class="company-meta">
+        <span><a href="https://www.mont-fort.com" target="_blank">mont-fort.com</a></span>
+        <span>Commodity trading / asset investment</span>
+        <span>Awwwards Site of the Month Jul 2025 · SOTD on Awwwards, FWA, CSSDA</span>
+      </div>
+    </div>
+    <h3 class="subsection">What makes their site great</h3>
+    <ul class="bullets">
+      <li>A conservative, trust-critical industry given a cinematic immersive treatment — and it won everything.</li>
+      <li><strong>Scroll-pinned chapter storytelling:</strong> full-viewport sections that pin, play one idea (image + one line), then release.</li>
+      <li><strong>Big display type over full-bleed photography</strong> with heavy negative space.</li>
+    </ul>
+    <h3 class="subsection steal">What Einstein can steal</h3>
+    <ul class="bullets">
+      <li><strong>The pinned-chapter pacing for "your move, step by step"</strong> — a homepage band or the brand-story page that walks the Smart Move System one beat at a time.</li>
+      <li><strong>Display-type-on-photo treatment</strong> — directly compatible with the Bebas-on-photo direction we've already proven in internal tools.</li>
+      <li><strong>Commit to ONE cinematic idea instead of ten features</strong> — that's how a boring industry wins design awards.</li>
+    </ul>
+    <p class="fit-note"><strong>Fit note:</strong> heaviest implementation on this list (WebGL) — CSS sticky/scroll-timeline gets 80% of the effect at zero JS cost.</p>
+  </section>
+
+  <!-- 14. BreachBunny -->
+  <section class="company" id="breachbunny">
+    <div class="company-header">
+      <h2 class="section-title"><span class="num">14</span>BreachBunny — Humor as a Trust Strategy, Award-Validated</h2>
+      <div class="company-meta">
+        <span><a href="https://www.breachbunny.com" target="_blank">breachbunny.com</a></span>
+        <span>Insurance · digital-native (by Demodern, Webflow)</span>
+        <span>Awwwards Honorable Mention · Nov 2025</span>
+      </div>
+    </div>
+    <h3 class="subsection">What makes their site great</h3>
+    <ul class="bullets">
+      <li>Insurance for a digital-native generation, told "through memes, games, and 3D" — and the awards circuit rewarded it.</li>
+      <li><strong>The hero itself narrates the problem→solution arc in 3–4 scroll beats</strong> before asking the user for any navigation decision.</li>
+      <li>Video-preview hover interactions on content cards — content feels alive without autoplaying everything.</li>
+    </ul>
+    <h3 class="subsection steal">What Einstein can steal</h3>
+    <ul class="bullets">
+      <li><strong>Validation that witty-but-trustworthy wins at award level</strong> in a low-trust category — insurance and moving share the same skepticism problem.</li>
+      <li><strong>The narrating hero:</strong> open with the customer's fear, resolve it in 3 scroll beats, THEN show the nav and form.</li>
+      <li><strong>Hover-to-preview video cards</strong> for the review wall and crew profiles.</li>
+    </ul>
+    <p class="fit-note"><strong>Fit note:</strong> very WebGL/JS-heavy — steal the narrative idea and tone, implement with CSS scroll-driven animation.</p>
+  </section>
+
+  <!-- 15. Fintech trio -->
+  <section class="company" id="fintech-trio">
+    <div class="company-header">
+      <h2 class="section-title"><span class="num">15</span>Mercury · Ramp · Modern Treasury — The Fintech Trust Trio</h2>
+      <div class="company-meta">
+        <span><a href="https://mercury.com" target="_blank">mercury.com</a></span>
+        <span><a href="https://ramp.com" target="_blank">ramp.com</a></span>
+        <span><a href="https://www.moderntreasury.com" target="_blank">moderntreasury.com</a></span>
+        <span>2025–26 design-pattern benchmarks</span>
+      </div>
+    </div>
+    <h3 class="subsection">What makes their sites great</h3>
+    <ul class="bullets">
+      <li>All three must convert AND feel safe enough to hold your money — the same trust math as letting strangers carry your grandmother's china.</li>
+      <li><strong>Mercury:</strong> the hero shows the actual product with realistic data — no metaphors, no stock. Typography and spacing do the luxury signaling; almost zero decoration.</li>
+      <li><strong>Ramp:</strong> quantifies every claim and shows the math; stat counters and proof bars are first-class design blocks; pricing page = transparent tiers with the detail table below the fold.</li>
+      <li><strong>Modern Treasury:</strong> sells by visualizing chaos→order in a before/after flow diagram. The contrast does the selling.</li>
+    </ul>
+    <h3 class="subsection steal">What Einstein can steal</h3>
+    <ul class="bullets">
+      <li><strong>Product-forward hero:</strong> show the quote experience or move-day timeline in the hero, not a couple hugging boxes. CTA copy that removes friction — "See your price" beats "Get a quote."</li>
+      <li><strong>Numbers as design elements:</strong> "average 2-bed move: X hours · 99.4% on-time · $1.66/hr damages" rendered as proof bars, then the what's-always-included table — the direct template for our Pricing page.</li>
+      <li><strong>The before/after diagram for Why Us:</strong> DIY-or-cheap-mover chaos vs. the Smart Move System as a clean numbered flow. Strongest single pattern in the whole sweep.</li>
+    </ul>
+    <p class="fit-note"><strong>Fit note:</strong> all three run cooler than our voice, and B2B data density overwhelms consumers — cap at 3–4 hero numbers per page, keep the warmth.</p>
+  </section>
+
+  <!-- 16. Conversion pair -->
+  <section class="company" id="conversion-pair">
+    <div class="company-header">
+      <h2 class="section-title"><span class="num">16</span>MG Moving · Mission AC — Pure Conversion Mechanics</h2>
+      <div class="company-meta">
+        <span><a href="https://www.myguysmoving.com" target="_blank">myguysmoving.com</a></span>
+        <span><a href="https://missionacandplumbing.com" target="_blank">missionacandplumbing.com</a></span>
+        <span>Moving (VA) · HVAC (Houston) · 2025 books-jobs standouts</span>
+      </div>
+    </div>
+    <h3 class="subsection">What makes their sites great</h3>
+    <ul class="bullets">
+      <li>Neither wins beauty contests — both show up in every "websites that actually book jobs" analysis.</li>
+      <li><strong>3-field starter form above the fold</strong> — the repeated finding across every moving/home-services roundup: 3 fields converts, 8 doesn't.</li>
+      <li><strong>Trust badges + licenses + Google score clustered in one band</strong> directly under the hero.</li>
+      <li><strong>Owner talking-head video in the hero</strong> (Mission AC) — humanizes a strangers-in-your-home service in 10 seconds.</li>
+      <li>Sticky "Book Now" that never disappears, including a mobile bottom bar.</li>
+    </ul>
+    <h3 class="subsection steal">What Einstein can steal</h3>
+    <ul class="bullets">
+      <li><strong>A 3-field starter that hands into the real VP quote funnel</strong> — the full form becomes step 2, not step 0.</li>
+      <li><strong>The trust band as one reusable block</strong> on every page type — review score + count, licenses, guarantees, badges in a single horizontal cluster.</li>
+      <li><strong>Branch-manager talking-head videos for location pages</strong> — Calvin on the North Austin page, on camera, 15 seconds.</li>
+    </ul>
+    <p class="fit-note"><strong>Fit note:</strong> visually mid, both — mechanics references only, zero aesthetic inspiration.</p>
+  </section>
+
+  <!-- 17. Microsoft AI -->
+  <section class="company" id="microsoft-ai">
+    <div class="company-header">
+      <h2 class="section-title"><span class="num">17</span>Microsoft AI — Big-Type Minimalism at Scale</h2>
+      <div class="company-meta">
+        <span><a href="https://microsoft.ai" target="_blank">microsoft.ai</a></span>
+        <span>Corporate AI brand</span>
+        <span>Awwwards Site of the Day · Nov 2025</span>
+      </div>
+    </div>
+    <h3 class="subsection">What makes their site great</h3>
+    <ul class="bullets">
+      <li><strong>Oversized statement typography as the primary visual</strong> — some sections have no hero image at all and still carry weight.</li>
+      <li>Generous max-width prose with a single accent color — long-form content that stays readable.</li>
+    </ul>
+    <h3 class="subsection steal">What Einstein can steal</h3>
+    <ul class="bullets">
+      <li><strong>The big-type fallback pattern</strong> for any page where our photography is weak — a confident statement beats a mediocre photo.</li>
+      <li><strong>The readable long-form pattern</strong> for service pages, guides, and the FAQ-heavy content the location pages carry.</li>
+    </ul>
+    <p class="fit-note"><strong>Fit note:</strong> sterile for Einstein's voice — a typography and spacing reference only.</p>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- WAVE 2 PATTERN MAP -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <section class="moves-section" id="pattern-map">
+    <div class="eyebrow">Wave 2 Synthesis</div>
+    <h2 class="section-title" style="margin-top: 12px;">7 Patterns × the 5 Workshop Page Types</h2>
+    <p class="lede" style="margin-bottom: 0;">The recurring patterns across Wave 2, mapped to the pages Laura asked us to mock. Every one decomposes into a reusable FSE block; prefer CSS scroll-driven animation + sticky over JS libraries.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Pattern</th><th>From</th><th>Serves</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Real-footage hero — one promise, one CTA</td><td>VIPro, Mission AC, Terminal</td><td>Homepage · Location (BM video)</td></tr>
+          <tr><td>Product-forward hero (show the quote flow / move-day timeline)</td><td>Mercury, Ramp</td><td>Homepage · Pricing</td></tr>
+          <tr><td>Trust band directly under the hero (one reusable block)</td><td>MG Moving, Oscar, VIPro</td><td>Every page type</td></tr>
+          <tr><td>Scroll-pinned 3–5 beat process story</td><td>Montfort, BreachBunny, Terminal</td><td>Why Us · Homepage · Service</td></tr>
+          <tr><td>Before/after contrast diagram</td><td>Modern Treasury</td><td>Why Us · Service</td></tr>
+          <tr><td>Quantified proof + transparent pricing table + 3-field starter</td><td>Ramp, Oscar</td><td>Pricing · Homepage</td></tr>
+          <tr><td>Filterable review wall, video-first</td><td>VIPro, BreachBunny</td><td>Why Us · Location (auto-filtered)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ -->
   <!-- 7 MOVES SUMMARY -->
   <!-- ═══════════════════════════════════════════════ -->
   <section class="moves-section" id="seven-moves">
@@ -766,16 +1288,301 @@
           <tr><td>Sweetgreen</td><td>Fast-casual food</td><td>Public, 220+ loc</td><td>Custom typography, whitespace, sourcing transparency</td></tr>
           <tr><td>Wistia</td><td>Video platform (B2B)</td><td>~$100M+ rev, self-funded</td><td>Know when to be fun vs. functional, video hero</td></tr>
           <tr><td>Shake Shack</td><td>Fast-casual food</td><td>Public, 275+ loc</td><td>Origin story as centerpiece, design system at scale</td></tr>
+          <tr><td>Terminal Industries</td><td>Logistics B2B</td><td>Awwwards SOTM 9/25</td><td>Real operational photography, modular block discipline</td></tr>
+          <tr><td>VIPro Moving</td><td>Moving</td><td>2025 Best of Movers</td><td>Crew hero video, video-review wall — the in-industry bar</td></tr>
+          <tr><td>Montfort</td><td>Commodity trading</td><td>Awwwards SOTM 7/25</td><td>Scroll-pinned chapters, display type on photo</td></tr>
+          <tr><td>BreachBunny</td><td>Insurance</td><td>Awwwards HM 11/25</td><td>Humor as trust strategy, narrating hero</td></tr>
+          <tr><td>Mercury / Ramp / Mod. Treasury</td><td>Fintech</td><td>2025–26 benchmarks</td><td>Product-forward hero, numbers as design, before/after diagram</td></tr>
+          <tr><td>MG Moving / Mission AC</td><td>Moving / HVAC</td><td>2025 books-jobs lists</td><td>3-field starter, trust band, sticky CTA, BM video</td></tr>
+          <tr><td>Microsoft AI</td><td>Corporate AI</td><td>Awwwards SOTD 11/25</td><td>Big-type fallback where photography is weak</td></tr>
         </tbody>
       </table>
     </div>
   </section>
 
-  <div class="footer">Compiled by Albert for Cameron Brown · Einstein Moving Company · April 2026</div>
+  <div class="footer">Compiled by Albert for Cameron Brown · Einstein Moving Company · April 2026 · Wave 2 + curation layer added June 2026</div>
 
 </main>
 
 </div>
+
+<script>
+(function () {
+  var KEY = 'einstein-inspo-curation-v1';
+  var state = { notes: {}, hidden: [], likes: {} };
+  try {
+    var loaded = JSON.parse(localStorage.getItem(KEY) || '{}');
+    if (loaded && typeof loaded === 'object') {
+      if (loaded.notes && typeof loaded.notes === 'object' && !Array.isArray(loaded.notes)) state.notes = loaded.notes;
+      if (Array.isArray(loaded.hidden)) state.hidden = loaded.hidden;
+      if (loaded.likes && typeof loaded.likes === 'object' && !Array.isArray(loaded.likes)) state.likes = loaded.likes;
+    }
+  } catch (e) {}
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+  }
+
+  function siteName(sec) {
+    var t = sec.querySelector('.section-title');
+    if (!t) return sec.id;
+    var clone = t.cloneNode(true);
+    var num = clone.querySelector('.num');
+    if (num) num.remove();
+    return clone.textContent.trim();
+  }
+
+  function shortName(sec) { return siteName(sec).split('—')[0].trim(); }
+
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section.company'));
+
+  // ── Designed band where a screenshot is missing ──
+  sections.forEach(function (sec) {
+    if (sec.querySelector('.screenshot')) return;
+    var firstLink = sec.querySelector('.company-meta a');
+    var band = document.createElement('div');
+    band.className = 'site-band';
+    var nm = document.createElement('div');
+    nm.className = 'band-name';
+    nm.textContent = shortName(sec);
+    band.appendChild(nm);
+    if (firstLink) {
+      var visit = document.createElement('a');
+      visit.className = 'band-visit';
+      visit.href = firstLink.href;
+      visit.target = '_blank';
+      visit.rel = 'noopener';
+      visit.textContent = 'Open the live site →';
+      band.appendChild(visit);
+    }
+    var header = sec.querySelector('.company-header');
+    header.parentNode.insertBefore(band, header.nextSibling);
+  });
+
+  // ── Curation UI per section ──
+  sections.forEach(function (sec) {
+    var id = sec.id;
+
+    // Hide button
+    var header = sec.querySelector('.company-header');
+    var bar = document.createElement('div');
+    bar.className = 'curate-bar';
+    var hideBtn = document.createElement('button');
+    hideBtn.className = 'hide-btn';
+    hideBtn.textContent = '✕ Hide this one — not for us';
+    hideBtn.addEventListener('click', function () {
+      if (state.hidden.indexOf(id) === -1) state.hidden.push(id);
+      save(); render();
+    });
+    bar.appendChild(hideBtn);
+    header.appendChild(bar);
+
+    // Per-bullet like pins on the steal lists
+    var stealHeads = sec.querySelectorAll('h3.subsection.steal');
+    Array.prototype.forEach.call(stealHeads, function (h) {
+      var list = h.nextElementSibling;
+      if (!list || !list.classList.contains('bullets')) return;
+      list.classList.add('likeable');
+      Array.prototype.forEach.call(list.children, function (li, i) {
+        var likeKey = id + '::' + i;
+        var btn = document.createElement('button');
+        btn.className = 'like-btn';
+        btn.type = 'button';
+        btn.textContent = '♥';
+        btn.setAttribute('aria-label', 'Like this idea from ' + shortName(sec));
+        btn.title = 'I want to steal this';
+        function syncBtn() {
+          btn.classList.toggle('liked', !!(state.likes[id] && state.likes[id][likeKey]));
+        }
+        btn.addEventListener('click', function () {
+          state.likes[id] = state.likes[id] || {};
+          if (state.likes[id][likeKey]) {
+            delete state.likes[id][likeKey];
+          } else {
+            state.likes[id][likeKey] = li.textContent.replace(/^♥\s*/, '').trim();
+          }
+          save(); syncBtn(); render();
+        });
+        syncBtn();
+        li.insertBefore(btn, li.firstChild);
+      });
+    });
+
+    // Notes box
+    var wrap = document.createElement('div');
+    wrap.className = 'note-wrap';
+    var label = document.createElement('div');
+    label.className = 'note-label';
+    label.innerHTML = '♥ What I want to steal from this one <span class="saved-dot">saved ✓</span>';
+    var box = document.createElement('textarea');
+    box.className = 'note-box';
+    box.placeholder = 'Anything else you like here? Tap the ♥ pins above for the listed ideas; use this box for everything they missed…';
+    box.setAttribute('aria-label', 'Notes for ' + shortName(sec));
+    box.value = state.notes[id] || '';
+    if (box.value) wrap.classList.add('has-note');
+    var t;
+    box.addEventListener('input', function () {
+      state.notes[id] = box.value;
+      wrap.classList.toggle('has-note', !!box.value.trim());
+      save(); render();
+      var dot = label.querySelector('.saved-dot');
+      dot.classList.add('show');
+      clearTimeout(t);
+      t = setTimeout(function () { dot.classList.remove('show'); }, 1200);
+    });
+    wrap.appendChild(label);
+    wrap.appendChild(box);
+    sec.appendChild(wrap);
+  });
+
+  // ── Picks bar (always reachable) ──
+  var pbar = document.createElement('div');
+  pbar.className = 'picks-bar';
+  pbar.innerHTML = '<span class="pb-count"><b id="pbPicks">0</b> picks</span>' +
+    '<button class="pb-hidden" id="pbHidden" type="button">0 hidden</button>' +
+    '<button class="pb-export" id="pbExport" type="button">📋 Export</button>';
+  document.body.appendChild(pbar);
+  var pop = document.createElement('div');
+  pop.className = 'picks-pop';
+  pop.innerHTML = '<div class="tray-title">Hidden — tap to restore</div><div id="popList"></div>';
+  document.body.appendChild(pop);
+  document.getElementById('pbHidden').addEventListener('click', function () {
+    pop.classList.toggle('show');
+  });
+
+  function hasPick(id) {
+    var n = (state.notes[id] || '').trim();
+    var l = state.likes[id] && Object.keys(state.likes[id]).length;
+    return !!(n || l);
+  }
+
+  function render() {
+    var pickCount = 0;
+    sections.forEach(function (sec) {
+      var hidden = state.hidden.indexOf(sec.id) !== -1;
+      sec.classList.toggle('is-hidden', hidden);
+      if (hasPick(sec.id)) pickCount++;
+      var tocLink = document.querySelector('.toc a[href="#' + sec.id + '"]');
+      if (tocLink && tocLink.parentElement) {
+        tocLink.parentElement.classList.toggle('is-hidden', hidden);
+        tocLink.parentElement.classList.toggle('has-note', hasPick(sec.id));
+      }
+    });
+
+    // Sidebar tray + popover list
+    var fill = function (container) {
+      container.innerHTML = '';
+      state.hidden.forEach(function (id) {
+        var sec = document.getElementById(id);
+        if (!sec) return;
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = '↩ ' + shortName(sec);
+        b.title = 'Restore';
+        b.addEventListener('click', function () {
+          state.hidden = state.hidden.filter(function (x) { return x !== id; });
+          save(); render();
+        });
+        container.appendChild(b);
+      });
+    };
+    fill(document.getElementById('hiddenList'));
+    fill(document.getElementById('popList'));
+    document.getElementById('hiddenCount').textContent = state.hidden.length;
+    document.getElementById('hiddenTray').classList.toggle('show', state.hidden.length > 0);
+    document.getElementById('pbHidden').textContent = state.hidden.length + ' hidden';
+    document.getElementById('pbPicks').textContent = pickCount;
+    if (!state.hidden.length) pop.classList.remove('show');
+  }
+
+  // ── TOC: restore-on-click for hidden, scrollspy ──
+  Array.prototype.forEach.call(document.querySelectorAll('.toc ol a'), function (a) {
+    a.addEventListener('click', function (e) {
+      var id = (a.getAttribute('href') || '').slice(1);
+      if (state.hidden.indexOf(id) !== -1) {
+        e.preventDefault();
+        state.hidden = state.hidden.filter(function (x) { return x !== id; });
+        save(); render();
+        var sec = document.getElementById(id);
+        if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  if ('IntersectionObserver' in window) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        Array.prototype.forEach.call(document.querySelectorAll('.toc li.toc-active'), function (li) {
+          li.classList.remove('toc-active');
+        });
+        var link = document.querySelector('.toc a[href="#' + en.target.id + '"]');
+        if (link && link.parentElement) link.parentElement.classList.add('toc-active');
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    sections.forEach(function (sec) { spy.observe(sec); });
+  }
+
+  // ── Export ──
+  function doExport() {
+    var lines = ['# Cameron’s Inspiration Picks — ' + new Date().toLocaleDateString(), ''];
+    var any = false;
+    sections.forEach(function (sec) {
+      var id = sec.id;
+      var note = (state.notes[id] || '').trim();
+      var likes = state.likes[id] ? Object.keys(state.likes[id]).map(function (k) { return state.likes[id][k]; }) : [];
+      if (!note && !likes.length) return;
+      any = true;
+      var hidden = state.hidden.indexOf(id) !== -1;
+      lines.push('## ' + siteName(sec) + (hidden ? ' *(later hidden)*' : ''));
+      Array.prototype.forEach.call(sec.querySelectorAll('.company-meta a'), function (a) {
+        lines.push(a.href);
+      });
+      likes.forEach(function (l) { lines.push('- ♥ ' + l); });
+      if (note) {
+        lines.push('');
+        note.split('\n').forEach(function (ln) { lines.push('> ' + ln); });
+      }
+      lines.push('');
+    });
+    if (state.hidden.length) {
+      lines.push('## Hidden (not for us)');
+      state.hidden.forEach(function (id) {
+        var sec = document.getElementById(id);
+        if (sec) lines.push('- ' + siteName(sec));
+      });
+      any = true;
+    }
+    if (!any) lines.push('_No picks yet — tap a ♥ pin or drop a note under any site._');
+    var md = lines.join('\n');
+
+    var blob = new Blob([md], { type: 'text/markdown' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'inspiration-picks.md';
+    a.click();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+
+    var feedback = function (btn) {
+      if (!btn) return;
+      var old = btn.textContent;
+      btn.textContent = '✓ Exported';
+      setTimeout(function () { btn.textContent = old; }, 1600);
+    };
+    feedback(document.getElementById('exportBtn'));
+    feedback(document.getElementById('pbExport'));
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(md).catch(function () {});
+    }
+  }
+  document.getElementById('exportBtn').addEventListener('click', doExport);
+  document.getElementById('pbExport').addEventListener('click', doExport);
+
+  render();
+})();
+</script>
 
 </body>
 </html>
