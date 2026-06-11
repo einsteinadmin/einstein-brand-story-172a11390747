@@ -646,6 +646,13 @@
   .hidden-tray button { min-height: 36px; padding: 8px 14px; }
   .storage-caveat { font-size: 0.72rem; color: var(--text-muted); margin-top: 8px; text-align: center; }
 
+  .shot-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 24px 0 32px; }
+  .shot-strip.two { grid-template-columns: repeat(2, 1fr); }
+  .shot-strip figure { margin: 0; }
+  .shot-strip img { width: 100%; display: block; border-radius: 8px; border: 1px solid var(--card-border); }
+  .shot-strip figcaption { font-size: 0.7rem; color: var(--text-muted); margin-top: 6px; letter-spacing: 0.5px; }
+  @media (max-width: 700px) { .shot-strip { grid-template-columns: 1fr; } }
+
   /* ─── RESPONSIVE ─── */
   @media (max-width: 1024px) {
     .layout { grid-template-columns: 1fr; }
@@ -688,6 +695,14 @@
     <li><a href="#fintech-trio">Mercury · Ramp · Modern Treasury</a></li>
     <li><a href="#conversion-pair">MG Moving · Mission AC</a></li>
     <li><a href="#microsoft-ai">Microsoft AI</a></li>
+  </ol>
+  <div style="font-size:0.7rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-faint); margin:18px 0 10px;">Wave 3 · The Mover Journey (Jun)</div>
+  <ol style="counter-reset: toc-counter 17;">
+    <li><a href="#everylastdrop">Every Last Drop</a></li>
+    <li><a href="#scoutmotors">Scout Motors</a></li>
+    <li><a href="#nasaprospect">NASA Prospect</a></li>
+    <li><a href="#sbstheboat">SBS — The Boat</a></li>
+    <li><a href="#journey-buildmenu">The Build Menu</a></li>
   </ol>
   <div class="toc-section">
     <a href="#seven-moves">→ The 7 Moves Einstein Should Make</a>
@@ -771,7 +786,7 @@
     <ul class="bullets">
       <li><strong>Own a color.</strong> Lemonade owns pink in insurance. Einstein's orange should be as instantly recognizable in moving. The current site doesn't commit hard enough to the palette.</li>
       <li><strong>Conversational quoting UX.</strong> Einstein's quote form could feel like talking to a person, not filling out a government form. Even small copy changes ("Tell us about your move" vs. "Request a Quote") shift the whole vibe.</li>
-      <li><strong>Transparency as trust.</strong> Einstein has 5,900+ reviews at 4.9 stars. That's not a stat — that's a story. Show the real reviews, the real movers, the real moments. Don't just badge it.</li>
+      <li><strong>Transparency as trust.</strong> Einstein has 8,100+ reviews at 4.9 stars. That's not a stat — that's a story. Show the real reviews, the real movers, the real moments. Don't just badge it.</li>
     </ul>
   </section>
 
@@ -857,7 +872,7 @@
     <h3 class="subsection steal">What Einstein can steal</h3>
     <ul class="bullets">
       <li><strong>"Membership" language for repeat customers.</strong> Einstein has customers who move multiple times or refer friends. What if there was an Einstein Circle or a Smart Movers Club?</li>
-      <li><strong>Proof stacking above the fold.</strong> 5,900+ reviews, 4.9 stars, 55+ awards. Stack it immediately. Don't make people scroll to find it.</li>
+      <li><strong>Proof stacking above the fold.</strong> 8,100+ reviews, 4.9 stars, 55+ awards. Stack it immediately. Don't make people scroll to find it.</li>
       <li><strong>Vetting as a story.</strong> Einstein could tell the mover hiring/training story — how selective they are, what training looks like, why their movers are different.</li>
     </ul>
   </section>
@@ -1021,6 +1036,7 @@
         <span>Awwwards Site of the Month · Sep 2025</span>
       </div>
     </div>
+    <div class="screenshot"><img src="brand-screenshots/11-terminal-hero.png" alt="Terminal Industries homepage hero"></div>
     <h3 class="subsection">What makes their site great</h3>
     <ul class="bullets">
       <li>An AI yard-operating system for shipping yards — about as unglamorous as logistics gets — presented as a genuinely premium brand. The closest existing proof of Einstein's exact repositioning goal.</li>
@@ -1046,6 +1062,7 @@
         <span>2025 "Best Website" · Best of Movers Awards (beat 200+ movers)</span>
       </div>
     </div>
+    <div class="screenshot"><img src="brand-screenshots/12-vipro-hero.png" alt="VIPro Moving homepage hero"></div>
     <h3 class="subsection">What makes their site great</h3>
     <ul class="bullets">
       <li><strong>Real hero video of their own crews</strong> — not stock — the single most-cited reason it won.</li>
@@ -1071,6 +1088,7 @@
         <span>Awwwards Site of the Month Jul 2025 · SOTD on Awwwards, FWA, CSSDA</span>
       </div>
     </div>
+    <div class="screenshot"><img src="brand-screenshots/13-montfort-hero.png" alt="Montfort homepage hero"></div>
     <h3 class="subsection">What makes their site great</h3>
     <ul class="bullets">
       <li>A conservative, trust-critical industry given a cinematic immersive treatment — and it won everything.</li>
@@ -1096,6 +1114,7 @@
         <span>Awwwards Honorable Mention · Nov 2025</span>
       </div>
     </div>
+    <div class="screenshot"><img src="brand-screenshots/14-breachbunny-hero.png" alt="BreachBunny homepage hero"></div>
     <h3 class="subsection">What makes their site great</h3>
     <ul class="bullets">
       <li>Insurance for a digital-native generation, told "through memes, games, and 3D" — and the awards circuit rewarded it.</li>
@@ -1122,6 +1141,11 @@
         <span>2025–26 design-pattern benchmarks</span>
       </div>
     </div>
+    <div class="shot-strip">
+      <figure><img src="brand-screenshots/15a-mercury-hero.png" alt="Mercury homepage"><figcaption>Mercury</figcaption></figure>
+      <figure><img src="brand-screenshots/15b-ramp-hero.png" alt="Ramp homepage"><figcaption>Ramp</figcaption></figure>
+      <figure><img src="brand-screenshots/15c-moderntreasury-hero.png" alt="Modern Treasury homepage"><figcaption>Modern Treasury</figcaption></figure>
+    </div>
     <h3 class="subsection">What makes their sites great</h3>
     <ul class="bullets">
       <li>All three must convert AND feel safe enough to hold your money — the same trust math as letting strangers carry your grandmother's china.</li>
@@ -1144,10 +1168,11 @@
       <h2 class="section-title"><span class="num">16</span>MG Moving · Mission AC — Pure Conversion Mechanics</h2>
       <div class="company-meta">
         <span><a href="https://www.myguysmoving.com" target="_blank">myguysmoving.com</a></span>
-        <span><a href="https://missionacandplumbing.com" target="_blank">missionacandplumbing.com</a></span>
+        <span>Mission AC (site since offline — patterns from the 2025 analysis)</span>
         <span>Moving (VA) · HVAC (Houston) · 2025 books-jobs standouts</span>
       </div>
     </div>
+    <div class="screenshot"><img src="brand-screenshots/16a-mgmoving-hero.png" alt="MG Moving homepage hero"></div>
     <h3 class="subsection">What makes their sites great</h3>
     <ul class="bullets">
       <li>Neither wins beauty contests — both show up in every "websites that actually book jobs" analysis.</li>
@@ -1175,6 +1200,7 @@
         <span>Awwwards Site of the Day · Nov 2025</span>
       </div>
     </div>
+    <div class="screenshot"><img src="brand-screenshots/17-microsoftai-hero.png" alt="Microsoft AI homepage hero"></div>
     <h3 class="subsection">What makes their site great</h3>
     <ul class="bullets">
       <li><strong>Oversized statement typography as the primary visual</strong> — some sections have no hero image at all and still carry weight.</li>
@@ -1214,6 +1240,147 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════ -->
+  <!-- WAVE 3 — THE MOVER JOURNEY -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <div class="wave-banner" id="wave3">
+    <div class="eyebrow">Wave 3 · June 2026</div>
+    <h2>The Mover Journey — Cameron's Dream Homepage</h2>
+    <p><strong>The concept:</strong> as you scroll the homepage, two animated movers carry a couch down from the top floor of a tall building — down staircases past each differentiator — and at the bottom they load it into the truck. The movers are your companions through the whole scroll, with micro-quips along the way ("well, that's pretty cool" passing the awards; "look at that handsome guy" passing Meet Your Movers). These are the best verified examples of sites that have pulled off exactly this kind of scroll-driven journey — and the build menu for doing it on WordPress without an agency-WebGL budget. Full research: <em>website-workshop/research/scroll-journey-examples.md</em>.</p>
+  </div>
+
+  <!-- 18. Every Last Drop -->
+  <section class="company" id="everylastdrop">
+    <div class="company-header">
+      <h2 class="section-title"><span class="num">18</span>Every Last Drop — The Closest Thing to the Dream</h2>
+      <div class="company-meta">
+        <span><a href="http://everylastdrop.co.uk" target="_blank">everylastdrop.co.uk</a></span>
+        <span>Water-saving campaign · Nice and Serious</span>
+        <span>Awwwards Site of the Day · still cited 13 years later</span>
+      </div>
+    </div>
+    <div class="screenshot"><img src="brand-screenshots/18-everylastdrop-hero.png" alt="Every Last Drop — illustrated scroll journey"></div>
+    <h3 class="subsection">What makes their site great</h3>
+    <ul class="bullets">
+      <li>A single <strong>water drop is your companion for the entire page</strong> — it falls from a cloud through a showerhead, a tap, a garden hose, a supply chain, in one continuous vertical illustrated world. Every fact is a stop on the drop's journey, not a separate page block.</li>
+      <li>Structurally <strong>identical to the mover-couch concept</strong> — swap drop→couch, day-of-water→building floors.</li>
+      <li>Built with nothing fancier than scroll-keyed layer transforms (Skrollr-era) — no canvas, no WebGL, and it still won Awwwards.</li>
+    </ul>
+    <h3 class="subsection steal">What Einstein can steal</h3>
+    <ul class="bullets">
+      <li><strong>The single continuous vertical scene model.</strong> The building cross-section IS the page; differentiator sections are floors and landings the couch passes.</li>
+      <li><strong>One persistent hero object handing off between contexts</strong> — drop goes cloud→shower→tap; couch goes apartment→stairwell→lobby→truck ramp.</li>
+      <li><strong>Proof the mechanic is a layout idea, not a tech stack</strong> — today it's achievable with pure CSS scroll-driven animations.</li>
+    </ul>
+    <p class="fit-note"><strong>Caveat:</strong> 2013 desktop-first build that degrades poorly on mobile — design Einstein's mobile story FIRST, not as an afterthought.</p>
+  </section>
+
+  <!-- 19. Scout Motors -->
+  <section class="company" id="scoutmotors">
+    <div class="company-header">
+      <h2 class="section-title"><span class="num">19</span>Scout Motors — The Modern Commercial Benchmark</h2>
+      <div class="company-meta">
+        <span><a href="https://www.scoutmotors.com" target="_blank">scoutmotors.com</a></span>
+        <span>EV trucks · by Locomotive</span>
+        <span>Awwwards Site of the Day · 2024–26's best vehicle-journey site</span>
+      </div>
+    </div>
+    <div class="screenshot"><img src="brand-screenshots/19-scoutmotors-hero.png" alt="Scout Motors — scroll-scrubbed vehicle journey"></div>
+    <h3 class="subsection">What makes their site great</h3>
+    <ul class="bullets">
+      <li><strong>The vehicle is the protagonist:</strong> scroll scrubs the SUV's drive across terrain; feature sections attach to moments of the drive. Scroll faster, the truck moves faster.</li>
+      <li>Section "docking": the animation pins while a text panel slides past, then releases — the standard modern way to attach copy to a journey beat.</li>
+      <li>A vehicle company using vehicle-in-motion as the brand argument — the nearest positioning analog to "our movers carry your couch."</li>
+    </ul>
+    <h3 class="subsection steal">What Einstein can steal</h3>
+    <ul class="bullets">
+      <li><strong>Product-in-motion = brand argument.</strong> The couch descent literally demonstrates careful handling past every differentiator.</li>
+      <li><strong>The pin → scrub → release structure</strong> for attaching each differentiator's copy to a beat of the journey.</li>
+      <li><strong>Scrub honesty is free comedy:</strong> scroll back up and the movers walk backward up the stairs — that's just how scrubbing works, and it's very Einstein.</li>
+    </ul>
+    <p class="fit-note"><strong>Caveat:</strong> six-figure agency WebGL — copy its STRUCTURE with cheaper assets, never its fidelity.</p>
+  </section>
+
+  <!-- 20. NASA Prospect -->
+  <section class="company" id="nasaprospect">
+    <div class="company-header">
+      <h2 class="section-title"><span class="num">20</span>NASA Prospect — Characters as Scroll Companions</h2>
+      <div class="company-meta">
+        <span><a href="https://nasaprospect.com" target="_blank">nasaprospect.com</a></span>
+        <span>NASA Humans in Space Art program</span>
+        <span>Decade-long fixture of "best scrollytelling ever" lists</span>
+      </div>
+    </div>
+    <div class="screenshot"><img src="brand-screenshots/20-nasaprospect-hero.png" alt="NASA Prospect — character journey"></div>
+    <h3 class="subsection">What makes their site great</h3>
+    <ul class="bullets">
+      <li>Two named illustrated characters — Nicolas and Ema — <strong>physically travel through the page</strong>, planet by planet, collecting golden records as you scroll.</li>
+      <li>Each planet chapter has its own palette and discovery moments — progress is felt, not labeled.</li>
+      <li>Pre-WebGL, pre-GSAP — absolutely-positioned illustration layers, again proving the mechanic is cheap.</li>
+    </ul>
+    <h3 class="subsection steal">What Einstein can steal</h3>
+    <ul class="bullets">
+      <li><strong>Two named companions with consistent silhouettes</strong> — the movers should read as the same two guys floor to floor, with personality.</li>
+      <li><strong>Collectible beats = the quips.</strong> Their golden records are our "well, that's pretty cool" micro-payoffs at each floor — small discoveries keep scroll momentum.</li>
+      <li><strong>Chapter color-shifting:</strong> subtle background shifts per floor signal the descent.</li>
+    </ul>
+    <p class="fit-note"><strong>Caveat:</strong> heavy DOM parallax janks on mid-range phones, and autoplay audio is a 2012 idea — skip both.</p>
+  </section>
+
+  <!-- 21. SBS The Boat -->
+  <section class="company" id="sbstheboat">
+    <div class="company-header">
+      <h2 class="section-title"><span class="num">21</span>SBS "The Boat" — Atmosphere and Pacing</h2>
+      <div class="company-meta">
+        <span><a href="https://www.sbs.com.au/theboat/" target="_blank">sbs.com.au/theboat</a></span>
+        <span>Interactive graphic novel · SBS Australia</span>
+        <span>Communication Arts feature · the canonical scroll-comic</span>
+      </div>
+    </div>
+    <div class="screenshot"><img src="brand-screenshots/21-sbstheboat-hero.png" alt="SBS The Boat — scroll-driven graphic novel"></div>
+    <h3 class="subsection">What makes their site great</h3>
+    <ul class="bullets">
+      <li>A refugee boat journey told as a scroll-driven graphic novel — 222 hand-painted illustrations, 59 animated sequences; scrolling IS the voyage progressing.</li>
+      <li>Hand-crafted illustration layers + parallax beat fancy tech when the art direction is strong.</li>
+      <li>Ambient atmosphere shifts per chapter — weather, sound, mood.</li>
+    </ul>
+    <h3 class="subsection steal">What Einstein can steal</h3>
+    <ul class="bullets">
+      <li><strong>Atmosphere per floor:</strong> top floor = packing chaos, stairwell = teamwork, lobby = almost there, curb = payoff — the way The Boat shifts weather per chapter.</li>
+      <li><strong>Animated vignettes inside a scroll spine</strong> — short loops (mover wiping brow, couch tilting around a corner) that play in view, instead of scrubbing everything.</li>
+      <li><strong>Rest landings:</strong> static floors between animated flights of stairs — pacing belongs to the reader.</li>
+    </ul>
+    <p class="fit-note"><strong>Caveat:</strong> 222 illustrations took a year — Einstein's version is ~5–7 key moments, not a continuous film.</p>
+  </section>
+
+  <!-- 22. Build menu -->
+  <section class="company" id="journey-buildmenu">
+    <div class="company-header">
+      <h2 class="section-title"><span class="num">22</span>The Build Menu — How You'd Actually Make It</h2>
+      <div class="company-meta">
+        <span><a href="https://css-tricks.com/lets-make-one-of-those-fancy-scrolling-animations-used-on-apple-product-pages/" target="_blank">Apple canvas-scrub technique (CSS-Tricks)</a></span>
+        <span><a href="https://codepen.io/GreenSock/pen/mdVEpKK" target="_blank">GSAP sprite-walk demo</a></span>
+        <span><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Scroll-driven_animations" target="_blank">CSS scroll-driven animations (MDN)</a></span>
+      </div>
+    </div>
+    <h3 class="subsection">The menu, cheapest → richest</h3>
+    <ul class="bullets">
+      <li><strong>CSS scroll-driven animations</strong> (animation-timeline) — zero JS; movers' path + walk cycle + speech bubbles in pure CSS. Works in Chrome/Edge/Safari; Firefox needs a static fallback.</li>
+      <li><strong>GSAP ScrollTrigger + sprite sheets ★ the recommendation</strong> — pin the building scene, tween the movers along a path, step through carry-cycle frames, fire quips on enter. ~70&nbsp;KB JS, works everywhere, WordPress-friendly, easy to hand to KP.</li>
+      <li><strong>Lottie</strong> — best if KP's designer lives in After Effects; player weight is real.</li>
+      <li><strong>Canvas image-sequence scrub</strong> (the Apple technique) — reserve for ONE cinematic beat: the couch-into-truck finale.</li>
+      <li><strong>WebGL (Scout tier)</strong> — skip. The brand wins on charm, not fidelity.</li>
+    </ul>
+    <h3 class="subsection steal">The architecture rules (from the full research)</h3>
+    <ul class="bullets">
+      <li><strong>Content first, journey second:</strong> differentiator sections stay real, indexable FSE blocks; the journey is a decoration layer. JS off = still a complete fast homepage. Non-negotiable for SEO/Core Web Vitals.</li>
+      <li><strong>The journey ends on the conversion</strong> (Make Your Money Matter's lesson — that site is dead now, study via Wayback): couch slides into the truck, doors close, "That's the Smart Move. Get your quote."</li>
+      <li><strong>Asset plan is days, not months:</strong> 2 mover characters + couch, ~5 sprite poses each (carry-walk, corner-turn, quip, wipe-brow, truck-load) + one building cross-section illustration. ≤800&nbsp;KB total, lazy-loaded, hero stays static.</li>
+      <li><strong>Mobile = vignette mode, not scrub mode:</strong> movers walk in at each section edge, set the couch down, quip. Less pinning, no scroll-hijack feel. <em>prefers-reduced-motion</em> gets static movers at each floor.</li>
+    </ul>
+    <p class="fit-note"><strong>Caveat:</strong> sprite characters read "cartoon" — on-brand for the witty voice, but the illustration style must come from the Brand Kit or it's clip-art on a premium site.</p>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ -->
   <!-- 7 MOVES SUMMARY -->
   <!-- ═══════════════════════════════════════════════ -->
   <section class="moves-section" id="seven-moves">
@@ -1235,7 +1402,7 @@
       <div class="move-card">
         <span class="move-num">03</span>
         <h4>Proof Stacking, Not Proof Hiding</h4>
-        <p>5,900+ reviews at 4.9 stars. 55+ awards. That's absurd for a moving company. Stack it aggressively above the fold. Make it impossible to miss.</p>
+        <p>8,100+ reviews at 4.9 stars. 55+ awards. That's absurd for a moving company. Stack it aggressively above the fold. Make it impossible to miss.</p>
       </div>
       <div class="move-card">
         <span class="move-num">04</span>
@@ -1295,6 +1462,10 @@
           <tr><td>Mercury / Ramp / Mod. Treasury</td><td>Fintech</td><td>2025–26 benchmarks</td><td>Product-forward hero, numbers as design, before/after diagram</td></tr>
           <tr><td>MG Moving / Mission AC</td><td>Moving / HVAC</td><td>2025 books-jobs lists</td><td>3-field starter, trust band, sticky CTA, BM video</td></tr>
           <tr><td>Microsoft AI</td><td>Corporate AI</td><td>Awwwards SOTD 11/25</td><td>Big-type fallback where photography is weak</td></tr>
+          <tr><td>Every Last Drop</td><td>Water campaign</td><td>Awwwards SOTD</td><td>The couch-journey blueprint: one object, one continuous scene</td></tr>
+          <tr><td>Scout Motors</td><td>EV trucks</td><td>Awwwards SOTD</td><td>Pin→scrub→release docking; product-in-motion as argument</td></tr>
+          <tr><td>NASA Prospect</td><td>Space education</td><td>Scrollytelling canon</td><td>Named companions + collectible quip beats</td></tr>
+          <tr><td>SBS The Boat</td><td>Interactive comic</td><td>Comm Arts feature</td><td>Atmosphere per chapter, vignettes over full scrub</td></tr>
         </tbody>
       </table>
     </div>
@@ -1338,7 +1509,7 @@
 
   // ── Designed band where a screenshot is missing ──
   sections.forEach(function (sec) {
-    if (sec.querySelector('.screenshot')) return;
+    if (sec.querySelector('.screenshot') || sec.querySelector('.shot-strip')) return;
     var firstLink = sec.querySelector('.company-meta a');
     var band = document.createElement('div');
     band.className = 'site-band';
