@@ -748,6 +748,7 @@
   </ol>
   <div class="toc-section">
     <a href="#plan">→ The Plan (for KP)</a>
+    <a href="#llm-lens">→ The LLM Lens (9 questions + 10 rules)</a>
     <a href="#seven-moves">→ The 7 Moves Einstein Should Make</a>
     <a href="#pattern-map">→ Wave-2 Patterns × Page Types</a>
     <a href="#comparison">→ Comparison Table</a>
@@ -811,6 +812,52 @@
         <p>Components aren't a separate phase — they emerge from the build-out. Every region of every mock is tagged <strong>reusable component</strong> vs. <strong>page-specific</strong>, so extraction is reading a labeled map. Those become the FSE block library for the whole site. Open question for KP: what format should the component handoff take — inventory, annotated HTML, token-mapped CSS?</p>
       </div>
     </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- THE LLM LENS -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <section class="moves-section" id="llm-lens" style="margin-top:0; padding-top:0; border-top:none; margin-bottom:80px;">
+    <div class="eyebrow">Redesign Consideration · June 2026</div>
+    <h2 class="section-title" style="margin-top:12px;">The LLM Lens — Designing for the Machines That Answer "Who Should Move Me?"</h2>
+    <p class="lede" style="margin-bottom:16px;">A growing share of "best movers in Austin" discovery happens through ChatGPT, Perplexity, and Google AI Overviews. Research findings (full report: <em>website-workshop/research/llm-readability-geo.md</em>, sourced from 2024–26 studies — Vercel, Cloudflare, Ahrefs' 75K-brand analysis, the Princeton GEO paper):</p>
+    <div class="common-thread" style="margin-bottom:32px;">
+      <p><strong>The three facts that change design decisions:</strong> (1) <strong>No major AI crawler renders JavaScript</strong> — only Gemini does. To every other bot, a JS-rendered page is blank; the quote-funnel app is invisible. (2) <strong>The biggest citation driver is off-site</strong> — brand mentions correlate with AI citations far more than backlinks (r=0.664 vs 0.218); ~82% of AI citations are earned media. Einstein's 8,100+ reviews are the real GEO asset — the site's job is to be the quotable source-of-truth they resolve to. (3) <strong>llms.txt is currently read by essentially nobody</strong> — ship it because it's cheap, expect nothing.</p>
+      <p><strong>Durability (Cameron asked):</strong> the durable 80% is "publish real answers in real server-rendered HTML and be genuinely well-reviewed" — that outlives every model generation. Only the bot-specific 20% (llms.txt, user-agent quirks) has a shelf life; re-check every ~6 months.</p>
+    </div>
+
+    <h3 class="subsection">The 9 questions every mockup must answer somewhere (in real text)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>#</th><th>Question</th><th>Lives on</th><th>Pattern</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>What services do you offer?</td><td>Services hub + page per service</td><td>H2 per service, 2–3 plain-text sentences each; real text links, not icon-only cards</td></tr>
+          <tr><td>2</td><td>How much do you charge?</td><td><strong>Dedicated pricing page</strong></td><td>Hourly rates in plain HTML text + a simple table; typical-move cost examples with numbers. The quote form links FROM it, never replaces it</td></tr>
+          <tr><td>3</td><td>What payment methods?</td><td>Pricing FAQ + footer</td><td>One visible sentence ("all major credit cards, no deposit…")</td></tr>
+          <tr><td>4</td><td>Where do you serve?</td><td>Location page per branch</td><td>Real local copy (neighborhoods, landmarks), NAP identical to Google Business Profile</td></tr>
+          <tr><td>5</td><td>When are you available?</td><td>Branch pages + pricing</td><td>Visible hours text + a booking-lead-time sentence ("most moves book within X days")</td></tr>
+          <tr><td>6</td><td>What makes you trustworthy?</td><td>Reviews page + every footer</td><td>"8,100+ reviews · 4.9★" as crawlable text site-wide; review excerpts in HTML, never JS widgets/iframes; USDOT numbers in text</td></tr>
+          <tr><td>7</td><td>What do you specialize in?</td><td>About + service pages</td><td>The niche stated in the first 100 words ("local residential moving across TX + Tampa, W-2 trained crews")</td></tr>
+          <tr><td>8</td><td>Why choose you?</td><td>Homepage + Why Us</td><td>Smart Move System as a bulleted FACTUAL list — each bullet one extractable sentence with a number. Facts over adjectives (the GEO paper measured ~40% visibility lift from stats/quotes/citations)</td></tr>
+          <tr><td>9</td><td>How do I get a quote?</td><td>Every page</td><td>One plain-HTML sentence with the path + phone, so a bot can relay the action; the funnel stays the JS app it needs to be</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="subsection steal" style="margin-top:36px;">The 10 design rules (apply to EVERY mockup)</h3>
+    <ul class="bullets">
+      <li><strong>The view-source test.</strong> Every customer fact (services, rates, hours, areas, phone, reviews) exists in the initial HTML — nothing load-bearing injected by JS.</li>
+      <li><strong>One page per question</strong> — each of the 9 has one obvious home where a copy-pasteable paragraph answers it in the first 100 words.</li>
+      <li><strong>Real heading hierarchy</strong> — one H1 (service + city), logical H2/H3s, key headings phrased as customer questions (the live site already does this — keep it).</li>
+      <li><strong>Numbers over adjectives</strong> — every claim carries a statistic, named source, or quotable line.</li>
+      <li><strong>Pricing in plain text + an HTML table</strong> on a dedicated page; quote funnel linked from it.</li>
+      <li><strong>FAQ block (3–6 Q&amp;As) at the bottom of every key page</strong> — question-phrased H3s, direct 2–4 sentence answers, FAQPage schema mirroring the visible text.</li>
+      <li><strong>Reviews as crawlable text</strong> — real excerpts in HTML, aggregate rating in the footer site-wide.</li>
+      <li><strong>Branch pages with local entity data</strong> — NAP matching GBP exactly, neighborhood/landmark copy, MovingCompany JSON-LD per location.</li>
+      <li><strong>Text links and alt text everywhere</strong> — no icon-only or canvas CTAs, nothing critical trapped in images.</li>
+      <li><strong>Decoration is additive and removable.</strong> The page reads perfectly with JS off — that IS the bot's view. The mover journey animates content that's already in the DOM; it never replaces it. Accordion/tab content stays in the DOM.</li>
+    </ul>
+    <p class="fit-note" style="margin-top:24px;"><strong>How this shapes the shoot-out:</strong> every v2 concept gets tightened against these rules, and the 9 questions become a scored checklist on each mockup. Rule 10 is the reconciliation with the Mover Journey (Wave 3): award-level motion and LLM legibility coexist when the journey is a decoration layer over real, indexable content blocks — which is exactly the architecture already locked for the WordPress rebuild.</p>
   </section>
 
   <!-- 1. Who Gives A Crap -->
